@@ -27,12 +27,20 @@ public class LargeNumber implements Comparable<LargeNumber> {
 
     // Constructor with a given non-negative integer
     public LargeNumber(int n) {
+        init(n);
+    }
+
+    // Initialize the object based on converting an integer to decimals
+    public void init(int n) {
         if (n < 0) {
             n = -n; // store the absolute value in number
             sign = -1;
         }
         else
             sign = 1;
+        if (number != null)
+            number.clear(); // Clear existing data if any
+        
         number = new ArrayList<Integer>(0); // start with an empty array
         // Convert the n to decimals and add it to the array one by one
         while (n > 0) {
@@ -41,7 +49,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
             n = n / 10;
         }
     }
-
+    
     // find out the number of digits
     public int getSize() {
         return number.size();
