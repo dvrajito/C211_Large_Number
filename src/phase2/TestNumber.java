@@ -20,6 +20,13 @@ public class TestNumber {
             System.out.println("The number is positive.");
         else
             System.out.println("The number is negative."); 
+        testMultiply();
+    }
+    
+    public static void testMultiply() {
+        LargeNumber n = new LargeNumber(53894);
+        LargeNumber o = new LargeNumber(58348);
+        n.multiply(o);
     }
 
 }
