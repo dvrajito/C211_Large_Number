@@ -50,6 +50,16 @@ public class LargeNumber implements Comparable<LargeNumber> {
         }
     }
     
+    // Team 6
+    public LargeNumber(String n) {
+        
+    }
+    
+    // Team 6
+    public void init(String n) {
+        
+    }
+    
     // find out the number of digits
     public int getSize() {
         return number.size();
@@ -71,10 +81,46 @@ public class LargeNumber implements Comparable<LargeNumber> {
     }
 
     // Function allowing us to sort an array of large numbers
+    // Should return ` if this is larger than other, 0 if they are equal
+    // and -1 if this is smaller than other. 
+    // Team 3
     @Override
-    public int compareTo(LargeNumber o) {
-        // TODO Auto-generated method stub
-        return 0;
+    public int compareTo(LargeNumber other) {
+        return 0; // statement so that the function compiles
+    }
+    
+    // Team 1
+    public void add(LargeNumber other) {
+        
     }
 
+    // Team 2
+    public void subtract(LargeNumber other) {
+        
+    }
+    
+    // Team 4
+    public void multiply(LargeNumber other) {
+        
+    }
+    
+    // Team 5
+    public void divide(LargeNumber other) {
+        
+    }
+    
+    // Team 7
+    public void percent(LargeNumber other) {
+        
+    }
+    
+    // Team 8
+    public void cleanTrail() {
+        
+    }
+    
+    // Team 9
+    public void power(LargeNumber other) {
+        
+    }
 }
