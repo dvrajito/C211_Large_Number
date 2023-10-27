@@ -187,12 +187,16 @@ private void subtractFromLarge(ArrayList<Integer> from, ArrayList<Integer> value
     }
 
     // Team 8
-    public void cleanTrail() {
+    public void cleanTrail() 
+    {
         //Remove current member until current member does not equal 0.
-        for(int digit = getSize() - 1; digit > 0; digit--){
+        int digit = getSize() - 1;
+        while(digit > 0)
+        {
             if(number.get(digit) > 0) //There are no more trailing zeroes.
                 break;
             number.remove(digit);
+            digit--; 
         }
     }
 
