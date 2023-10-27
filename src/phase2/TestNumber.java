@@ -22,6 +22,8 @@ public class TestNumber {
             System.out.println("The number is negative."); 
         //testMultiply();
         testCleanTrail();
+        testMultiply();
+        testSubtraction(350, 275);
     }
     
     public static void testMultiply() {
@@ -30,11 +32,19 @@ public class TestNumber {
         n.multiply(o);
     }
 
-    public static void testCleanTrail(){
+    public static void testCleanTrail() {
         LargeNumber test = new LargeNumber("0000015600");
         System.out.println(test);
         test.cleanTrail();
         System.out.println(test);
+    }
+
+    public static void testSubtraction(int int1, int int2) {
+        LargeNumber num1 = new LargeNumber(int1);
+        LargeNumber num2 = new LargeNumber(int2);
+
+        // Subtract num2 from num1
+        num1.subtract(num2);
     }
 
 }

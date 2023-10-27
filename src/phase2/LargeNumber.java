@@ -95,8 +95,65 @@ public class LargeNumber implements Comparable<LargeNumber> {
 
     // Team 2
     public void subtract(LargeNumber other) {
+    // Check if signs are different
+        if (this.sign != other.sign) {
+        //Change the sign of 'other' and Perform Addition
+            other.sign = -other.sign;
+            this.add(other);
+            other.sign = -other.sign;
+
+        } else {
+            // Handle subtraction for numbers with the same sign
+            int comparison = this.compareTo(other);
+
+            if (comparison == 0) {
+                // Numbers are equal, result should be zero
+                System.out.println("Subtraction result: 0");
+            } else if (comparison > 0) {
+                // 'this' is larger, perform subtraction
+                subtractFromLarge(this.number, other.number);
+            } else {
+                // 'other' is larger, perform subtraction and adjust the sign
+                subtractFromLarge(other.number, this.number);
+                this.sign = -1;
+            }
+        }
 
     }
+    
+    // Helper method for subtracting two positive ArrayLists representing LargeNumbers.
+private void subtractFromLarge(ArrayList<Integer> from, ArrayList<Integer> value) {
+    int carry = 0;
+    //return the max number of digit btw this and Other
+    int maxDigits = Math.max(from.size(), value.size());
+
+    //loop through each digit position from right to left. 
+    for (int i = 0; i < maxDigits; i++) {
+        int digit1 = i < from.size() ? from.get(i) : 0;
+        int digit2 = i < value.size() ? value.get(i) : 0;
+        int result = digit1 - digit2 - carry;
+
+        if (result < 0) {
+            result += 10;
+            carry = 1;
+        } else {
+            carry = 0;
+        }
+
+        if (i < from.size()) {
+            from.set(i, result);
+        } else {
+            from.add(result);
+        }
+    }
+    
+    // Print the result
+    System.out.print("Subtraction result: ");
+    for (int i = from.size() - 1; i >= 0; i--) {
+        System.out.print(from.get(i));
+    }
+    System.out.println();
+}
 
     // Team 4
     public void multiply(LargeNumber other) {
