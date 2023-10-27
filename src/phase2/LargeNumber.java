@@ -1,7 +1,7 @@
 /************************************************************
  * C211 Fall 2023
  * Project Phase 2
- * Authors: Dana Vrajitoru
+ * Authors: Dana Vrajitoru, Gavin Power, Brandon Jones, Charlie Kinnett
  * Class: LargeNumber
  * Implements an integer number of an unlimited size and 
  * a few useful arithmetic operations.
@@ -186,7 +186,9 @@ private void subtractFromLarge(ArrayList<Integer> from, ArrayList<Integer> value
 
     }
 
-    // Team 8
+    // Team 8: Gavin Power, Brandon Jones, Charlie Kinnett
+    // This is a method that removes all trailing 0s in a LargeNumber object
+    // with a test in TestNumber.java titled testCleanTrail
     public void cleanTrail() 
     {
         //Remove current member until current member does not equal 0.
