@@ -51,7 +51,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
 
     // Team 6
     public LargeNumber(String n) {
-
+        
     }
 
     // Team 6
@@ -131,7 +131,12 @@ public class LargeNumber implements Comparable<LargeNumber> {
 
     // Team 8
     public void cleanTrail() {
-
+        //Remove current member until current member does not equal 0.
+        for(int digit = getSize() - 1; digit > 0; digit--){
+            if(number.get(digit) > 0) //There are no more trailing zeroes.
+                break;
+            number.remove(digit);
+        }
     }
 
     // Team 9

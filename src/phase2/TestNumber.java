@@ -20,13 +20,21 @@ public class TestNumber {
             System.out.println("The number is positive.");
         else
             System.out.println("The number is negative."); 
-        testMultiply();
+        //testMultiply();
+        testCleanTrail();
     }
     
     public static void testMultiply() {
         LargeNumber n = new LargeNumber(53894);
         LargeNumber o = new LargeNumber(58348);
         n.multiply(o);
+    }
+
+    public static void testCleanTrail(){
+        LargeNumber test = new LargeNumber("0000015600");
+        System.out.println(test);
+        test.cleanTrail();
+        System.out.println(test);
     }
 
 }
