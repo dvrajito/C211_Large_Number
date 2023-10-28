@@ -51,12 +51,27 @@ public class LargeNumber implements Comparable<LargeNumber> {
 
     // Team 6
     public LargeNumber(String n) {
-        
+        init(n);
     }
 
     // Team 6
     public void init(String n) {
-
+    	//clear number arrayString
+        if (number != null) {
+        	number.clear();
+        }
+        //check if the number in the beginning is pos or neg
+        if (n.charAt(0) == '+') {
+        	sign = 1;
+        }else if (n.charAt(0) == '-') {
+        	sign = -1;
+        }
+        //add it to the arrayList one number at a time
+        for(int i = 0; i < n.length(); i++) {
+        	int charNumber = Integer.parseInt(n);
+        	number.add(0, charNumber);
+        }
+        System.out.println(number);
     }
 
     // find out the number of digits
