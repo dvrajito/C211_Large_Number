@@ -5,9 +5,9 @@
  * Class: LargeNumber
  * A test class for the class LargeNumber.
  ************************************************************/
-import java.util.Scanner;
 
 package phase2;
+import java.util.Scanner;
 
 public class TestNumber {
 
@@ -22,7 +22,7 @@ public class TestNumber {
         else
             System.out.println("The number is negative."); 
         //testMultiply();
-        testCleanTrail();
+//        testCleanTrail();
         testMultiply();
         testSubtraction(350, 275);
     }
