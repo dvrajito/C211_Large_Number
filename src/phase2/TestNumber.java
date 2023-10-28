@@ -5,6 +5,7 @@
  * Class: LargeNumber
  * A test class for the class LargeNumber.
  ************************************************************/
+import java.util.Scanner;
 
 package phase2;
 
@@ -48,5 +49,16 @@ public class TestNumber {
         // Subtract num2 from num1
         num1.subtract(num2);
     }
-
+    
+    public static void testString() {
+    	Scanner scan = new Scanner (System.in);
+    	String test;
+    	
+    	System.out.println("Enter a string");
+    	test = scan.nextLine();
+    	
+    	//Created a LargeNumber object using users entry
+    	LargeNumber testingString = new LargeNumber(test);
+    	System.out.println(testingString);
+    }
 }
