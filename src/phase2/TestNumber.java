@@ -1,7 +1,7 @@
 /************************************************************
  * C211 Fall 2023
  * Project Phase 2
- * Authors: Dana Vrajitoru
+ * Authors: Dana Vrajitoru, Gavin Power, Brandon Jones, Charlie Kinnett
  * Class: LargeNumber
  * A test class for the class LargeNumber.
  ************************************************************/
@@ -32,6 +32,8 @@ public class TestNumber {
         n.multiply(o);
     }
 
+    // Team 8: Gavin Power, Brandon Jones, Charlie Kinnett
+    // This method tests the cleanTrail method in LargeNumber
     public static void testCleanTrail() {
         LargeNumber test = new LargeNumber("0000015600");
         System.out.println(test);
