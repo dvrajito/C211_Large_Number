@@ -1,7 +1,7 @@
 /************************************************************
  * C211 Fall 2023
  * Project Phase 2
- * Authors: Dana Vrajitoru, Gavin Power, Brandon Jones, Charlie Kinnett
+ * Authors: Dana Vrajitoru, Gavin Power, Brandon Jones, Charlie Kinnett, Tiffany Leister,
  * Class: LargeNumber
  * Implements an integer number of an unlimited size and
  * a few useful arithmetic operations.
@@ -124,8 +124,37 @@ public class LargeNumber implements Comparable<LargeNumber> {
     }
 
     // Team 1
-    public void add(LargeNumber other) {
+    //Addition Function
+    //Katie Delucio, Maddie Abbott, Tiffany Leister
+public void add(LargeNumber other) {
+    	int nextDig = 0;
+    	//Checking if signs are different
+    	//If so, subtraction method is carried out
+    	if(this.sign != other.sign) {
+    		this.subtract(other);
+    	}
+    	else {
+    		for(int i = 0; i < other.getSize();
+    				i++) {
+    			int sum=
+    					(this.number).get(i) +
+    					(other.number).get(i) + nextDig;
+    			//If sum of two digits is larger than 10, store result
+    			if(sum < 10) {
+    				(this.number).set(i, sum);
+    				nextDig = 0;
+    			}
+    			else {
 
+    				(this.number).set(i,sum = 10);
+    				nextDig = 1;
+    			}
+    		}
+    		//Add new element to array number 
+    		if(nextDig == 1) {
+    			(this.number).add(1);
+    		}
+    	}
     }
 
     // Team 2
