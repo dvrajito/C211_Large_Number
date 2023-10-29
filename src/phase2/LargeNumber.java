@@ -3,13 +3,14 @@
  * Project Phase 2
  * Authors: Dana Vrajitoru, Gavin Power, Brandon Jones, Charlie Kinnett
  * Class: LargeNumber
- * Implements an integer number of an unlimited size and 
+ * Implements an integer number of an unlimited size and
  * a few useful arithmetic operations.
  ************************************************************/
 
 package phase2;
 
 import java.util.ArrayList; // import the ArrayList class
+import java.util.Collections;
 
 // A class designed to store large integers in an array called number
 // with the sign stored in the attribute sign.
@@ -39,14 +40,33 @@ public class LargeNumber implements Comparable<LargeNumber> {
             sign = 1;
         if (number != null)
             number.clear(); // Clear existing data if any
+        else
+            number = new ArrayList<Integer>(0); // create an empty array
 
-        number = new ArrayList<Integer>(0); // start with an empty array
         // Convert the n to decimals and add it to the array one by one
         while (n > 0) {
             int dec = n % 10;
             number.add(dec);
             n = n / 10;
         }
+    }
+
+    // copy constructor
+    public LargeNumber(LargeNumber other) {
+        init(other);
+    }
+
+    // Initialize the object with a copy of another object
+    public void init(LargeNumber other) {
+        sign = other.sign;
+
+        if (number != null)
+            number.clear(); // Clear existing data if any
+        else
+            number = new ArrayList<Integer>(0);
+
+        // use copy from Collections
+        Collections.copy(number, other.number);
     }
 
     // Team 6
@@ -56,20 +76,20 @@ public class LargeNumber implements Comparable<LargeNumber> {
 
     // Team 6
     public void init(String n) {
-    	//clear number arrayString
+        // clear number arrayString
         if (number != null) {
-        	number.clear();
+            number.clear();
         }
-        //check if the number in the beginning is pos or neg
+        // check if the number in the beginning is pos or neg
         if (n.charAt(0) == '+') {
-        	sign = 1;
-        }else if (n.charAt(0) == '-') {
-        	sign = -1;
+            sign = 1;
+        } else if (n.charAt(0) == '-') {
+            sign = -1;
         }
-        //add it to the arrayList one number at a time
-        for(int i = 0; i < n.length(); i++) {
-        	int charNumber = Integer.parseInt(n);
-        	number.add(0, charNumber);
+        // add it to the arrayList one number at a time
+        for (int i = 0; i < n.length(); i++) {
+            int charNumber = Integer.parseInt(n);
+            number.add(0, charNumber);
         }
         System.out.println(number);
     }
@@ -110,9 +130,9 @@ public class LargeNumber implements Comparable<LargeNumber> {
 
     // Team 2
     public void subtract(LargeNumber other) {
-    // Check if signs are different
+        // Check if signs are different
         if (this.sign != other.sign) {
-        //Change the sign of 'other' and Perform Addition
+            // Change the sign of 'other' and Perform Addition
             other.sign = -other.sign;
             this.add(other);
             other.sign = -other.sign;
@@ -135,50 +155,51 @@ public class LargeNumber implements Comparable<LargeNumber> {
         }
 
     }
-    
-    // Helper method for subtracting two positive ArrayLists representing LargeNumbers.
-private void subtractFromLarge(ArrayList<Integer> from, ArrayList<Integer> value) {
-    int carry = 0;
-    //return the max number of digit btw this and Other
-    int maxDigits = Math.max(from.size(), value.size());
 
-    //loop through each digit position from right to left. 
-    for (int i = 0; i < maxDigits; i++) {
-        int digit1 = i < from.size() ? from.get(i) : 0;
-        int digit2 = i < value.size() ? value.get(i) : 0;
-        int result = digit1 - digit2 - carry;
+    // Helper method for subtracting two positive ArrayLists representing
+    // LargeNumbers.
+    private void subtractFromLarge(ArrayList<Integer> from, ArrayList<Integer> value) {
+        int carry = 0;
+        // return the max number of digit btw this and Other
+        int maxDigits = Math.max(from.size(), value.size());
 
-        if (result < 0) {
-            result += 10;
-            carry = 1;
-        } else {
-            carry = 0;
+        // loop through each digit position from right to left.
+        for (int i = 0; i < maxDigits; i++) {
+            int digit1 = i < from.size() ? from.get(i) : 0;
+            int digit2 = i < value.size() ? value.get(i) : 0;
+            int result = digit1 - digit2 - carry;
+
+            if (result < 0) {
+                result += 10;
+                carry = 1;
+            } else {
+                carry = 0;
+            }
+
+            if (i < from.size()) {
+                from.set(i, result);
+            } else {
+                from.add(result);
+            }
         }
 
-        if (i < from.size()) {
-            from.set(i, result);
-        } else {
-            from.add(result);
+        // Print the result
+        System.out.print("Subtraction result: ");
+        for (int i = from.size() - 1; i >= 0; i--) {
+            System.out.print(from.get(i));
         }
+        System.out.println();
     }
-    
-    // Print the result
-    System.out.print("Subtraction result: ");
-    for (int i = from.size() - 1; i >= 0; i--) {
-        System.out.print(from.get(i));
-    }
-    System.out.println();
-}
 
     // Team 4
     public void multiply(LargeNumber other) {
         LargeNumber copiedLN = this;
         // Execute the multiplication on the copy
-        for(int i = other.getSize(); i < 0; i--) {
+        for (int i = other.getSize(); i < 0; i--) {
             copiedLN.add(other);
         }
         // Finding the final sign
-        if(copiedLN.getSign() == other.getSign()) {
+        if (copiedLN.getSign() == other.getSign()) {
             copiedLN.sign = 1;
         } else {
             copiedLN.sign = -1;
@@ -204,16 +225,14 @@ private void subtractFromLarge(ArrayList<Integer> from, ArrayList<Integer> value
     // Team 8: Gavin Power, Brandon Jones, Charlie Kinnett
     // This is a method that removes all trailing 0s in a LargeNumber object
     // with a test in TestNumber.java titled testCleanTrail
-    public void cleanTrail() 
-    {
-        //Remove current member until current member does not equal 0.
+    public void cleanTrail() {
+        // Remove current member until current member does not equal 0.
         int digit = getSize() - 1;
-        while(digit > 0)
-        {
-            if(number.get(digit) > 0) //There are no more trailing zeroes.
+        while (digit > 0) {
+            if (number.get(digit) > 0) // There are no more trailing zeroes.
                 break;
             number.remove(digit);
-            digit--; 
+            digit--;
         }
     }
 

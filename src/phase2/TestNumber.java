@@ -13,20 +13,21 @@ public class TestNumber {
 
     // A quick test for the methods so far
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
+        
         LargeNumber n = new LargeNumber(628451);
         System.out.println("The number is: " + n); // test toString
         System.out.println("The number has " + n.getSize() + " digits.");
         if (n.getSign() > 0)
             System.out.println("The number is positive.");
         else
-            System.out.println("The number is negative."); 
+            System.out.println("The number is negative.");
         //testMultiply();
 //        testCleanTrail();
+        testCopy();
         testMultiply();
         testSubtraction(350, 275);
     }
-    
+
     public static void testMultiply() {
         LargeNumber n = new LargeNumber(53894);
         LargeNumber o = new LargeNumber(58348);
@@ -49,16 +50,37 @@ public class TestNumber {
         // Subtract num2 from num1
         num1.subtract(num2);
     }
-    
+
     public static void testString() {
     	Scanner scan = new Scanner (System.in);
     	String test;
-    	
+
     	System.out.println("Enter a string");
     	test = scan.nextLine();
-    	
+
     	//Created a LargeNumber object using users entry
     	LargeNumber testingString = new LargeNumber(test);
     	System.out.println(testingString);
+    }
+    
+    // Tests the constructor with an integer
+    public static void testConstructorInt() {
+        LargeNumber n = new LargeNumber(628451);
+        System.out.println("The number is: " + n); // test toString
+        System.out.println("The number has " + n.getSize() + " digits.");
+        if (n.getSign() > 0)
+            System.out.println("The number is positive.");
+        else
+            System.out.println("The number is negative.");
+    }
+    
+    // Tests the copy constructor 
+    public static void testCopy() {
+        LargeNumber n1, n2;
+        n1 = new LargeNumber(46274);
+        n2 = new LargeNumber(n1);
+        n2.number.set(1, 3);
+        n2.number.add(5);
+        System.out.println("n1: " + n1 + " n2: " + n2);
     }
 }
