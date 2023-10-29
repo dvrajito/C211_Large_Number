@@ -1,7 +1,7 @@
 /************************************************************
  * C211 Fall 2023
  * Project Phase 2
- * Authors: Dana Vrajitoru, Gavin Power, Brandon Jones, Charlie Kinnett
+ * Authors: Dana Vrajitoru, Gavin Power, Brandon Jones, Charlie Kinnett, Tiffany Leister
  * Class: LargeNumber
  * A test class for the class LargeNumber.
  ************************************************************/
@@ -82,5 +82,15 @@ public class TestNumber {
         n2.number.set(1, 3);
         n2.number.add(5);
         System.out.println("n1: " + n1 + " n2: " + n2);
+    }
+    //Team 1: Katie Delucio, Maddie Abbott, Tiffany Leister
+    //Addition of Large Number Test
+    //Output initial value and new value after addition
+    public static void testAdd() {
+    	LargeNumber addTestOne = new LargeNumber(12345);
+    	LargeNumber addTestTwo = new LargeNumber(1111);
+    	System.out.println("The current value of the number is " + addTestOne);
+    	addTestOne.add(addTestTwo);
+    	System.out.println("The new value of the number is " + addTestOne);
     }
 }
