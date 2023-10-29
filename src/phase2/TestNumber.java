@@ -1,7 +1,7 @@
 /************************************************************
  * C211 Fall 2023
  * Project Phase 2
- * Authors: Dana Vrajitoru, Gavin Power, Brandon Jones, Charlie Kinnett, Tiffany Leister
+ * Authors: Dana Vrajitoru, Gavin Power, Brandon Jones, Charlie Kinnett, Tiffany Leister, Katie DeLucio,
  * Class: LargeNumber
  * A test class for the class LargeNumber.
  ************************************************************/
