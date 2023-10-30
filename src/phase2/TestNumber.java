@@ -25,7 +25,9 @@ public class TestNumber {
 //        testCleanTrail();
         testCopy();
         testMultiply();
-        testSubtraction(350, 275);
+        testSubtract(350, 275);
+        testSubtract(350, -275);
+        testSubtract(350, 350);
     }
 
     public static void testMultiply() {
@@ -43,10 +45,13 @@ public class TestNumber {
         System.out.println(test);
     }
 
-    public static void testSubtraction(int int1, int int2) {
+    /*
+    * Team 2: Amstrong Akendung, Alyssa Martinez, Mario Garcilazo
+    * Test method to test subtraction Logic
+    */
+    public static void testSubtract(int int1, int int2) {
         LargeNumber num1 = new LargeNumber(int1);
         LargeNumber num2 = new LargeNumber(int2);
-
         // Subtract num2 from num1
         num1.subtract(num2);
     }

@@ -126,38 +126,41 @@ public class LargeNumber implements Comparable<LargeNumber> {
     // Team 1
     //Addition Function
     //Katie Delucio, Maddie Abbott, Tiffany Leister
-public void add(LargeNumber other) {
-    	int nextDig = 0;
-    	//Checking if signs are different
-    	//If so, subtraction method is carried out
-    	if(this.sign != other.sign) {
-    		this.subtract(other);
-    	}
-    	else {
-    		for(int i = 0; i < other.getSize();
-    				i++) {
-    			int sum=
-    					(this.number).get(i) +
-    					(other.number).get(i) + nextDig;
-    			//If sum of two digits is larger than 10, store result
-    			if(sum < 10) {
-    				(this.number).set(i, sum);
-    				nextDig = 0;
-    			}
-    			else {
+    public void add(LargeNumber other) {
+        int nextDig = 0;
+        //Checking if signs are different
+        //If so, subtraction method is carried out
+        if (this.sign != other.sign) {
+            this.subtract(other);
+        } else {
+            for (int i = 0; i < other.getSize(); i++) {
+                int sum = (this.number).get(i) +
+                        (other.number).get(i) + nextDig;
+                //If sum of two digits is larger than 10, store result
+                if (sum < 10) {
+                    (this.number).set(i, sum);
+                    nextDig = 0;
+                } else {
 
-    				(this.number).set(i,sum = 10);
-    				nextDig = 1;
-    			}
-    		}
-    		//Add new element to array number 
-    		if(nextDig == 1) {
-    			(this.number).add(1);
-    		}
-    	}
+                    (this.number).set(i, sum = 10);
+                    nextDig = 1;
+                }
+            }
+            //Add new element to array number 
+            if (nextDig == 1) {
+                (this.number).add(1);
+            }
+        }
     }
-
-    // Team 2
+    
+    /**********************************************************************************************
+    * Team 2 
+    * Author :: Amstrong Akendung, Alyssa Martinez, Mario Garcilazo
+    * Description :: This method perform Subtraction of Large Number by first checking their sign.
+    *  if they different it convert into an Addition else, it compare the magnitude and does 
+    *  the subtraction accordinly with help of subtractFromLarge Helper method
+    *
+    ******************************************************************************************/
     public void subtract(LargeNumber other) {
         // Check if signs are different
         if (this.sign != other.sign) {
@@ -185,8 +188,7 @@ public void add(LargeNumber other) {
 
     }
 
-    // Helper method for subtracting two positive ArrayLists representing
-    // LargeNumbers.
+    // Helper method for subtracting two positive ArrayLists representing LargeNumbers.
     private void subtractFromLarge(ArrayList<Integer> from, ArrayList<Integer> value) {
         int carry = 0;
         // return the max number of digit btw this and Other
