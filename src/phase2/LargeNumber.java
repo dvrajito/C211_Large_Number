@@ -62,11 +62,15 @@ public class LargeNumber implements Comparable<LargeNumber> {
 
         if (number != null)
             number.clear(); // Clear existing data if any
-        else
-            number = new ArrayList<Integer>(0);
+        
+        number = new ArrayList<Integer>(0);
 
-        // use copy from Collections
-        Collections.copy(number, other.number);
+        // copy them manually
+        for (Integer i: other.number)
+            number.add(i);
+        
+        // use copy from Collections - something wrong with the size
+        // Collections.copy(number, other.number);
     }
 
     // Team 6
