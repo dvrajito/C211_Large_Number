@@ -124,37 +124,33 @@ public class LargeNumber implements Comparable<LargeNumber> {
     }
 
     // Team 1
-    //Addition Function
-    //Katie Delucio, Maddie Abbott, Tiffany Leister
-public void add(LargeNumber other) {
-    	int nextDig = 0;
-    	//Checking if signs are different
-    	//If so, subtraction method is carried out
-    	if(this.sign != other.sign) {
-    		this.subtract(other);
-    	}
-    	else {
-    		for(int i = 0; i < other.getSize();
-    				i++) {
-    			int sum=
-    					(this.number).get(i) +
-    					(other.number).get(i) + nextDig;
-    			//If sum of two digits is larger than 10, store result
-    			if(sum < 10) {
-    				(this.number).set(i, sum);
-    				nextDig = 0;
-    			}
-    			else {
+    // Addition Function
+    // Katie Delucio, Maddie Abbott, Tiffany Leister
+    public void add(LargeNumber other) {
+        int nextDig = 0;
+        // Checking if signs are different
+        // If so, subtraction method is carried out
+        if (this.sign != other.sign) {
+            this.subtract(other);
+        } else {
+            for (int i = 0; i < other.getSize(); i++) {
+                int sum = (this.number).get(i) +
+                        (other.number).get(i) + nextDig;
+                // If sum of two digits is larger than 10, store result
+                if (sum < 10) {
+                    (this.number).set(i, sum);
+                    nextDig = 0;
+                } else {
 
-    				(this.number).set(i,sum = 10);
-    				nextDig = 1;
-    			}
-    		}
-    		//Add new element to array number 
-    		if(nextDig == 1) {
-    			(this.number).add(1);
-    		}
-    	}
+                    (this.number).set(i, sum = 10);
+                    nextDig = 1;
+                }
+            }
+            // Add new element to array number
+            if (nextDig == 1) {
+                (this.number).add(1);
+            }
+        }
     }
 
     // Team 2
@@ -224,8 +220,10 @@ public void add(LargeNumber other) {
     public void multiply(LargeNumber other) {
         LargeNumber copiedLN = this;
         // Execute the multiplication on the copy
-        for (int i = other.getSize(); i < 0; i--) {
+
+        for (int i = other.getSize(); i > 0; i--) {
             copiedLN.add(other);
+
         }
         // Finding the final sign
         if (copiedLN.getSign() == other.getSign()) {
