@@ -118,13 +118,64 @@ public class LargeNumber implements Comparable<LargeNumber> {
         return result;
     }
 
-    // Function allowing us to sort an array of large numbers
-    // Should return ` if this is larger than other, 0 if they are equal
-    // and -1 if this is smaller than other.
-    // Team 3
-    @Override
-    public int compareTo(LargeNumber other) {
-        return 0; // statement so that the function compiles
+    /********************************************************/
+    // Team 3: Trace Crafton, Jon Fulkerson, Stephen Torrijas
+    // Function allowing us to compare two arrays as integers
+    // Should return 1 if this is larger than other, 0 if they are equal
+    public int compareTo(LargeNumber o) {
+
+        // Declare variables used during function
+        int thisSign = this.getSign();
+        int otherSign = o.getSign();
+        int thisSize = this.getSize();
+        int otherSize = o.getSize();
+        // Subtract one from size to get true index
+        int thisIndex = thisSize - 1;
+        int otherIndex = otherSize - 1;
+
+        if (thisSign > otherSign) {
+            return 1; // This is positive, o is negative
+        } else if (thisSign < otherSign) {
+            return -1; // This is negative, o is positive
+        }
+
+        // Skip trailing zeros by decrementing the index if 
+        // index greater than or equal to 0 and number at index
+        // is equal to 0
+        while (thisIndex >= 0 && this.number.get(thisIndex) == 0) {
+            thisIndex--;
+        }
+        while (otherIndex >= 0 && o.number.get(otherIndex) == 0) {
+            otherIndex--;
+        }
+
+        // After skipping zeros, if the indexes are not equal, 
+        // we can compare the indexes and this will tell us which
+        // number is bigger/smaller
+        if (thisIndex != otherIndex) {
+            if (thisIndex > otherIndex) {
+                return 1;
+            } else {
+                return -1;
+            }
+        }
+
+        // While thisIndex is larger than 0, we compare the number
+        // at the thisIndex to the other number at the same index
+        while (thisIndex >= 0) {
+            int thisDigit = this.number.get(thisIndex);
+            int otherDigit = o.number.get(thisIndex);
+            if (thisDigit != otherDigit) {
+                if (thisDigit > otherDigit) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            }
+            thisIndex--;
+        }
+
+        return 0; // Both numbers are equal
     }
 
     // Team 1
@@ -267,6 +318,8 @@ public class LargeNumber implements Comparable<LargeNumber> {
 
     }
 
+
+    
     // Team 7
     public void percent(LargeNumber other) {
 
