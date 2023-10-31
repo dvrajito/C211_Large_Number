@@ -100,4 +100,11 @@ public class TestNumber {
         addTestOne.add(addTestTwo);
         System.out.println("The new value of the number is " + addTestOne);
     }
+	
+	//Team 7: Daniel Guernsey, Jiya Stroder, Jennifer Rose
+	    public void testDivide() {
+    	LargeNumber n = new LargeNumber(994823674);
+    	LargeNumber m = new LargeNumber(255674488);
+    	n.percent(m);
+    }
 }
