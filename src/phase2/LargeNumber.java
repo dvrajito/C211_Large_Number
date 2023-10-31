@@ -1,7 +1,7 @@
 /************************************************************
  * C211 Fall 2023
  * Project Phase 2
- * Authors: Dana Vrajitoru, Gavin Power, Brandon Jones, Charlie Kinnett, Tiffany Leister, Katie DeLucio, Madeline Abbott,
+ * Authors: Dana Vrajitoru, Gavin Power, Brandon Jones, Charlie Kinnett, Tiffany Leister, Katie DeLucio, Madeline Abbott, Jack Ventura, Matthew Molewyk, Titus Duncan
  * Class: LargeNumber
  * Implements an integer number of an unlimited size and
  * a few useful arithmetic operations.
@@ -249,8 +249,21 @@ public class LargeNumber implements Comparable<LargeNumber> {
             System.out.println("The multiplied number is negative.");
     }
 
-    // Team 5
+    // Team 5: Jack Ventura, Titus Duncan, Matthew Molewyk
+    //Method that takes a number as a parameter and divides an existing number by the parameter 
     public void divide(LargeNumber other) {
+        LargeNumber firstNumber = this;
+        
+        //check signs of each number
+        if (firstNumber.getSign() == other.getSign()) {
+            firstNumber.sign = 1;
+        } else {
+            firstNumber.sign = -1;
+        }
+        
+        //print statements for the value of quotient and its sign
+        System.out.println("The quotient is: " + firstNumber);
+        System.out.println("The sign of the quotient is " + firstNumber.sign);   
 
     }
 

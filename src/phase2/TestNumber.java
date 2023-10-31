@@ -29,12 +29,22 @@ public class TestNumber {
         testSubtract(350, 275);
         testSubtract(350, -275);
         testSubtract(350, 350);
+        testDivide();
     }
 
     public static void testMultiply() {
         LargeNumber n = new LargeNumber(53894);
         LargeNumber o = new LargeNumber(58348);
         n.multiply(o);
+    }
+    
+    //Team 5: Jack Ventura, Titus Duncan, Matthew Molewyk
+    //Method to test the Divide method in the LargeNumber class
+    public static void testDivide()
+    {
+        LargeNumber firstNumber = new LargeNumber(50000);
+        LargeNumber secondNumber = new LargeNumber(25000);
+        firstNumber.divide(secondNumber);
     }
 
     // Team 8: Gavin Power, Brandon Jones, Charlie Kinnett
