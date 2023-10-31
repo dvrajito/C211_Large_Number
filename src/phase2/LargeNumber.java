@@ -1,7 +1,7 @@
 /************************************************************
  * C211 Fall 2023
  * Project Phase 2
- * Authors: Dana Vrajitoru, Gavin Power, Brandon Jones, Charlie Kinnett, Tiffany Leister, Katie DeLucio, Madeline Abbott,
+ * Authors: Dana Vrajitoru, Gavin Power, Brandon Jones, Charlie Kinnett, Tiffany Leister, Katie DeLucio, Madeline Abbott, Daniel Guernsey, Jiya Stroder, Jennifer Rose
  * Class: LargeNumber
  * Implements an integer number of an unlimited size and
  * a few useful arithmetic operations.
@@ -306,9 +306,15 @@ public class LargeNumber implements Comparable<LargeNumber> {
 
     }
 
-    // Team 7
+	//Team 7: Daniel Guernsey, Jiya Stroder, Jennifer Rose
     public void percent(LargeNumber other) {
-
+    	LargeNumber copy = new LargeNumber(this);
+    	copy.divide(other);
+    	this.subtract(copy);
+//    	System.out.println("This is the percent method");
+    	System.out.println(this);
+    	
+    	// n - (n / m)
     }
 
     // Team 8: Gavin Power, Brandon Jones, Charlie Kinnett
