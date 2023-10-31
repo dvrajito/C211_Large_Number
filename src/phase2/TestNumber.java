@@ -29,6 +29,26 @@ public class TestNumber {
         testSubtract(350, 275);
         testSubtract(350, -275);
         testSubtract(350, 350);
+        
+        /*********************************************/
+        // Testing using compareTo method
+        // Test 1: Compare smaller number to bigger
+        testCompare(123456789, 987654321);
+        // Test 2: Compare bigger number to smaller
+        testCompare(465798132, 1500);
+        // Test 3: Compare equal numbers
+        testCompare(97654, 97654);
+        // Test 4: Comparison using negative numbers
+        testCompare(-123456, -456789);
+        // Test 5: Comparison with a negative number
+        // as first input
+        testCompare(-4569, 4569);
+        // Test 6: Test while 2nd number is negative
+        testCompare(123456, -456123);
+        // Test 7: Comparison using leading zeros
+        testCompare(00005, 00000005);
+        /*********************************************/
+        
     }
 
     public static void testMultiply() {
@@ -99,5 +119,21 @@ public class TestNumber {
         System.out.println("The current value of the number is " + addTestOne);
         addTestOne.add(addTestTwo);
         System.out.println("The new value of the number is " + addTestOne);
+    }
+    
+    // Method for testing compareTo function
+    public static void testCompare(int testInt1, int testInt2) {
+        LargeNumber num1 = new LargeNumber(testInt1);
+        LargeNumber num2 = new LargeNumber(testInt2);
+        
+        int result = num1.compareTo(num2);
+        
+        if (result == 1) {
+            System.out.println(num1 + " is greater than " + num2);
+        } else if (result == -1) {
+            System.out.println(num1 + " is smaller than " + num2);
+        } else {
+            System.out.println(num1 + " is equal to " + num2);
+        }
     }
 }
