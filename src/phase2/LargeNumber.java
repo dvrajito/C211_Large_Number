@@ -321,8 +321,16 @@ public class LargeNumber implements Comparable<LargeNumber> {
 
     
     // Team 7
+    // Team 7: Daniel Guernsey, Jiya Stroder, Jennifer Rose
     public void percent(LargeNumber other) {
 
+        LargeNumber copy = new LargeNumber(this);
+        copy.divide(other);
+        this.subtract(copy);
+//      System.out.println("This is the percent method");
+        System.out.println(this);
+
+        // n - (n / m)
     }
 
     // Team 8: Gavin Power, Brandon Jones, Charlie Kinnett

@@ -30,6 +30,7 @@ public class TestNumber {
         testSubtract(350, -275);
         testSubtract(350, 350);
         testDivide();
+        testPercent();
 
         /*********************************************/
         // Testing using compareTo method
@@ -64,6 +65,13 @@ public class TestNumber {
         LargeNumber firstNumber = new LargeNumber(50000);
         LargeNumber secondNumber = new LargeNumber(25000);
         firstNumber.divide(secondNumber);
+    }
+
+    // Team 7: Daniel Guernsey, Jiya Stroder, Jennifer Rose
+    public static void testPercent() {
+        LargeNumber n = new LargeNumber(994823674);
+        LargeNumber m = new LargeNumber(255674488);
+        n.percent(m);
     }
 
     // Team 8: Gavin Power, Brandon Jones, Charlie Kinnett
