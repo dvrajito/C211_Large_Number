@@ -1,7 +1,7 @@
 /************************************************************
  * C211 Fall 2023
  * Project Phase 2
- * Authors: Dana Vrajitoru, Gavin Power, Brandon Jones, Charlie Kinnett, Tiffany Leister, Katie DeLucio, Madeline Abbott,
+ * Authors: Dana Vrajitoru, Gavin Power, Brandon Jones, Charlie Kinnett, Tiffany Leister, Katie DeLucio, Madeline Abbott, Daniel Guernsey, Jiya Stroder, Jennifer Rose
  * Class: LargeNumber
  * A test class for the class LargeNumber.
  ************************************************************/
@@ -70,8 +70,9 @@ public class TestNumber {
     // Team 7: Daniel Guernsey, Jiya Stroder, Jennifer Rose
     public static void testPercent() {
         LargeNumber n = new LargeNumber(994823674);
-        LargeNumber m = new LargeNumber(255674488);
+        LargeNumber m = new LargeNumber(25567);
         n.percent(m);
+        System.out.println("Test Percent: " + n);
     }
 
     // Team 8: Gavin Power, Brandon Jones, Charlie Kinnett
