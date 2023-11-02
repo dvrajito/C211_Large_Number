@@ -62,13 +62,13 @@ public class LargeNumber implements Comparable<LargeNumber> {
 
         if (number != null)
             number.clear(); // Clear existing data if any
-        
+
         number = new ArrayList<Integer>(0);
 
         // copy them manually
-        for (Integer i: other.number)
+        for (Integer i : other.number)
             number.add(i);
-        
+
         // use copy from Collections - something wrong with the size
         // Collections.copy(number, other.number);
     }
@@ -139,7 +139,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
             return -1; // This is negative, o is positive
         }
 
-        // Skip trailing zeros by decrementing the index if 
+        // Skip trailing zeros by decrementing the index if
         // index greater than or equal to 0 and number at index
         // is equal to 0
         while (thisIndex >= 0 && this.number.get(thisIndex) == 0) {
@@ -149,7 +149,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
             otherIndex--;
         }
 
-        // After skipping zeros, if the indexes are not equal, 
+        // After skipping zeros, if the indexes are not equal,
         // we can compare the indexes and this will tell us which
         // number is bigger/smaller
         if (thisIndex != otherIndex) {
@@ -207,15 +207,17 @@ public class LargeNumber implements Comparable<LargeNumber> {
             }
         }
     }
-    
+
     /**********************************************************************************************
-    * Team 2 
-    * Author :: Amstrong Akendung, Alyssa Martinez, Mario Garcilazo
-    * Description :: This method perform Subtraction of Large Number by first checking their sign.
-    *  if they different it convert into an Addition else, it compare the magnitude and does 
-    *  the subtraction accordinly with help of subtractFromLarge Helper method
-    *
-    ******************************************************************************************/
+     * Team 2
+     * Author :: Amstrong Akendung, Alyssa Martinez, Mario Garcilazo
+     * Description :: This method perform Subtraction of Large Number by first
+     * checking their sign.
+     * if they different it convert into an Addition else, it compare the magnitude
+     * and does
+     * the subtraction accordinly with help of subtractFromLarge Helper method
+     *
+     ******************************************************************************************/
     public void subtract(LargeNumber other) {
         // Check if signs are different
         if (this.sign != other.sign) {
@@ -243,7 +245,8 @@ public class LargeNumber implements Comparable<LargeNumber> {
 
     }
 
-    // Helper method for subtracting two positive ArrayLists representing LargeNumbers.
+    // Helper method for subtracting two positive ArrayLists representing
+    // LargeNumbers.
     private void subtractFromLarge(ArrayList<Integer> from, ArrayList<Integer> value) {
         int carry = 0;
         // return the max number of digit btw this and Other
@@ -279,21 +282,40 @@ public class LargeNumber implements Comparable<LargeNumber> {
 
     // Team 4
     public void multiply(LargeNumber other) {
-        LargeNumber copiedLN = this;
+        LargeNumber copiedLN = new LargeNumber(this);
+        LargeNumber otherCopy = new LargeNumber(other);
         // Execute the multiplication on the copy
+        LargeNumber larger, smaller;
 
-        for (int i = other.getSize(); i > 0; i--) {
-            copiedLN.add(other);
-
+        if (this.compareTo(other) > 0) {
+            larger = this;
+            smaller = other;
+        } else {
+            larger = other;
+            smaller = this;
         }
+
+        int copiedWholeNumber = 0, smallerWhole = 0;
+
+        for (int i = larger.getSize(); i > 0; i--) {
+            copiedWholeNumber += larger.number.get(i - 1) * (int) Math.pow(10, i - 1);
+        }
+
+        for (int i = copiedWholeNumber; i > 0; i--) {
+            this.add(smaller);
+        }
+
+        copiedLN = new LargeNumber(copiedWholeNumber * smallerWhole);
+
         // Finding the final sign
         if (copiedLN.getSign() == other.getSign()) {
             copiedLN.sign = 1;
         } else {
             copiedLN.sign = -1;
         }
-        System.out.println("The multiplied number is: " + copiedLN); // test toString
-        System.out.println("The multiplied number has " + copiedLN.getSize() + " digits.");
+
+        System.out.println("The multiplied number is: " + this); // test toString
+        System.out.println("The multiplied number has " + this.getSize() + " digits.");
         if (copiedLN.getSign() > 0)
             System.out.println("The multiplied number is positive.");
         else
@@ -301,23 +323,24 @@ public class LargeNumber implements Comparable<LargeNumber> {
     }
 
     // Team 5: Jack Ventura, Titus Duncan, Matthew Molewyk
-    //Method that takes a number as a parameter and divides an existing number by the parameter 
+    // Method that takes a number as a parameter and divides an existing number by
+    // the parameter
     public void divide(LargeNumber other) {
         LargeNumber firstNumber = this;
-        
-        //check signs of each number
+
+        // check signs of each number
         if (firstNumber.getSign() == other.getSign()) {
             firstNumber.sign = 1;
         } else {
             firstNumber.sign = -1;
         }
-        
-        //print statements for the value of quotient and its sign
+
+        // print statements for the value of quotient and its sign
         System.out.println("The quotient is: " + firstNumber);
-        System.out.println("The sign of the quotient is " + firstNumber.sign);   
+        System.out.println("The sign of the quotient is " + firstNumber.sign);
 
     }
-    
+
     // Team 7: Daniel Guernsey, Jiya Stroder, Jennifer Rose
     public void percent(LargeNumber other) {
         LargeNumber copy = new LargeNumber(this);

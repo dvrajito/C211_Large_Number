@@ -24,37 +24,37 @@ public class TestNumber {
             System.out.println("The number is negative.");
         // testMultiply();
         // testCleanTrail();
-        testCopy();
+//        testCopy();
         testMultiply();
-        testSubtract(350, 275);
-        testSubtract(350, -275);
-        testSubtract(350, 350);
-        testDivide();
-        testPercent();
+//        testSubtract(350, 275);
+//        testSubtract(350, -275);
+//        testSubtract(350, 350);
+//        testDivide();
+//        testPercent();
 
         /*********************************************/
         // Testing using compareTo method
         // Test 1: Compare smaller number to bigger
-        testCompare(123456789, 987654321);
-        // Test 2: Compare bigger number to smaller
-        testCompare(465798132, 1500);
-        // Test 3: Compare equal numbers
-        testCompare(97654, 97654);
-        // Test 4: Comparison using negative numbers
-        testCompare(-123456, -456789);
-        // Test 5: Comparison with a negative number
-        // as first input
-        testCompare(-4569, 4569);
-        // Test 6: Test while 2nd number is negative
-        testCompare(123456, -456123);
-        // Test 7: Comparison using leading zeros
-        testCompare(00005, 00000005);
+//        testCompare(123456789, 987654321);
+//        // Test 2: Compare bigger number to smaller
+//        testCompare(465798132, 1500);
+//        // Test 3: Compare equal numbers
+//        testCompare(97654, 97654);
+//        // Test 4: Comparison using negative numbers
+//        testCompare(-123456, -456789);
+//        // Test 5: Comparison with a negative number
+//        // as first input
+//        testCompare(-4569, 4569);
+//        // Test 6: Test while 2nd number is negative
+//        testCompare(123456, -456123);
+//        // Test 7: Comparison using leading zeros
+//        testCompare(00005, 00000005);
         /*********************************************/
     }
 
     public static void testMultiply() {
-        LargeNumber n = new LargeNumber(53894);
-        LargeNumber o = new LargeNumber(58348);
+        LargeNumber n = new LargeNumber(3);
+        LargeNumber o = new LargeNumber(2);
         n.multiply(o);
     }
     
@@ -132,8 +132,8 @@ public class TestNumber {
     // Addition of Large Number Test
     // Output initial value and new value after addition
     public static void testAdd() {
-        LargeNumber addTestOne = new LargeNumber(12345);
-        LargeNumber addTestTwo = new LargeNumber(1111);
+        LargeNumber addTestOne = new LargeNumber(6);
+        LargeNumber addTestTwo = new LargeNumber(3);
         System.out.println("The current value of the number is " + addTestOne);
         addTestOne.add(addTestTwo);
         System.out.println("The new value of the number is " + addTestOne);
