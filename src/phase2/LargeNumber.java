@@ -83,19 +83,21 @@ public class LargeNumber implements Comparable<LargeNumber> {
         // clear number arrayString
         if (number != null) {
             number.clear();
-        }
+        }else{
+            number = new ArrayList<Integer>(0); // create an empty array
         // check if the number in the beginning is pos or neg
         if (n.charAt(0) == '+') {
             sign = 1;
         } else if (n.charAt(0) == '-') {
             sign = -1;
-        }
+        }else{
+            sign = 0;
         // add it to the arrayList one number at a time
         for (int i = 0; i < n.length(); i++) {
-            int charNumber = Integer.parseInt(n);
+            char c = n.charAt(i);
+            int charNumber = Integer.parseInt("" + c);
             number.add(0, charNumber);
         }
-        System.out.println(number);
     }
 
     // find out the number of digits
