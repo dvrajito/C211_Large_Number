@@ -182,6 +182,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
              // Add new element to array number
              if (nextDig == 1) {
                  (this.number).add(1);
+                  other.cleanTrail();
              }
          }
      }
