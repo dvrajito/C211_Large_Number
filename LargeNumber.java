@@ -163,7 +163,9 @@ public class LargeNumber implements Comparable<LargeNumber> {
          // Checking if signs are different
          // If so, subtraction method is carried out
          if (this.sign != other.sign) {
+             other.sign = -other.sign;
              this.subtract(other);
+             other.sign = -other.sign;
          } else {
              for (int i = 0; i < other.getSize(); i++) {
                  int sum = (this.number).get(i) +
@@ -173,7 +175,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
                      (this.number).set(i, sum);
                      nextDig = 0;
                  } else {
-                     (this.number).set(i, sum = 10);
+                     (this.number).set(i, sum - 10);
                      nextDig = 1;
                  }
              }
