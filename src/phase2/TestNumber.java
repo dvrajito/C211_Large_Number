@@ -25,7 +25,7 @@ public class TestNumber {
         // testMultiply();
         // testCleanTrail();
 //        testCopy();
-      testMultiply();
+//      testMultiply();
 //        testSubtract(350, 275);
 //        testSubtract(350, -275);
 //        testSubtract(350, 350);
