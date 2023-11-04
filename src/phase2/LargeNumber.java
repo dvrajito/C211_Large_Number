@@ -303,8 +303,11 @@ public class LargeNumber implements Comparable<LargeNumber> {
             copiedWholeNumber += larger.number.get(i - 1) * (int) Math.pow(10, i - 1);
         }
 
-        for (int i = copiedWholeNumber; i > 0; i--) {
-            this.add(smaller);
+        for (int i = copiedWholeNumber; i > 1; i--) {
+            System.out.println("Whole number: " + copiedWholeNumber);
+            System.out.println(i);
+            smaller.add(larger);
+            System.out.println(smaller);
         }
 
         copiedLN = new LargeNumber(copiedWholeNumber * smallerWhole);

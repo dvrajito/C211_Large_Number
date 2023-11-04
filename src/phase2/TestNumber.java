@@ -25,7 +25,7 @@ public class TestNumber {
         // testMultiply();
         // testCleanTrail();
 //        testCopy();
-//        testMultiply();
+      testMultiply();
 //        testSubtract(350, 275);
 //        testSubtract(350, -275);
 //        testSubtract(350, 350);
@@ -53,7 +53,7 @@ public class TestNumber {
     }
 
     public static void testMultiply() {
-        LargeNumber n = new LargeNumber(3);
+        LargeNumber n = new LargeNumber(2);
         LargeNumber o = new LargeNumber(2);
         n.multiply(o);
     }
