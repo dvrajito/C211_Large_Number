@@ -88,7 +88,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
         // check if the number in the beginning is pos or neg
         if (n.charAt(0) == '-') {
             sign = -1;
-        } else {
+        } else 
             sign = 1;
         
         // add it to the arrayList one number at a time
@@ -96,6 +96,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
             char c = n.charAt(i);
             int charNumber = Integer.parseInt("" + c);
             number.add(0, charNumber);
+        	}
         }
     }
 
