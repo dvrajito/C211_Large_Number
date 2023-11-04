@@ -29,7 +29,7 @@ public class TestNumber {
 //        testSubtract(350, 275);
 //        testSubtract(350, -275);
 //        testSubtract(350, 350);
-//        testDivide();
+          testDivide();
 //        testPercent();
 
         /*********************************************/
@@ -62,9 +62,13 @@ public class TestNumber {
     //Method to test the Divide method in the LargeNumber class
     public static void testDivide()
     {
-        LargeNumber firstNumber = new LargeNumber(50000);
-        LargeNumber secondNumber = new LargeNumber(25000);
-        firstNumber.divide(secondNumber);
+        LargeNumber dividend = new LargeNumber(50000);
+        LargeNumber divisor = new LargeNumber(25000);
+        dividend.divide(divisor);
+        
+        // print statements for the value of quotient and its sign
+        System.out.println("The quotient is: " + dividend);
+        System.out.println("The sign of the quotient is " + divisor.sign);
     }
 
     // Team 7: Daniel Guernsey, Jiya Stroder, Jennifer Rose
