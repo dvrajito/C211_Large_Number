@@ -283,42 +283,53 @@ public class LargeNumber implements Comparable<LargeNumber> {
     }
 
     // Team 4
+    public int toInt() {
+        int wholeNumber = 0;
+
+        for (int i = this.getSize(); i > 0; i--) {
+            wholeNumber += this.number.get(i - 1) * (int) Math.pow(10, i - 1);
+        }
+        return wholeNumber;
+    }
+    
+    // Team 4
     public void multiply(LargeNumber other) {
         LargeNumber copiedLN = new LargeNumber(this);
         LargeNumber otherCopy = new LargeNumber(other);
-        // Execute the multiplication on the copy
-        LargeNumber larger, smaller;
+        
+        // Execute the multiplication *using* the copy
+        // LargeNumber larger, smaller; DV : not needed - it doesn't make a difference
 
-        if (this.compareTo(other) > 0) {
-            larger = this;
-            smaller = other;
-        } else {
-            larger = other;
-            smaller = this;
-        }
-
-        int copiedWholeNumber = 0, smallerWhole = 0;
-
-        for (int i = larger.getSize(); i > 0; i--) {
-            copiedWholeNumber += larger.number.get(i - 1) * (int) Math.pow(10, i - 1);
-        }
-
-        for (int i = copiedWholeNumber; i > 1; i--) {
-            System.out.println("Whole number: " + copiedWholeNumber);
-            System.out.println(i);
-            smaller.add(larger);
-            System.out.println(smaller);
-        }
-
-        copiedLN = new LargeNumber(copiedWholeNumber * smallerWhole);
-
+//        if (this.compareTo(other) > 0) {
+//            larger = this;
+//            smaller = other;
+//        } else {
+//            larger = other;
+//            smaller = this;
+//        }
+        
         // Finding the final sign
-        if (copiedLN.getSign() == other.getSign()) {
-            copiedLN.sign = 1;
+        int signSave = 0; // DV: save the sign in this variable
+        if (this.getSign() == other.getSign()) {
+            signSave = 1;
         } else {
-            copiedLN.sign = -1;
+            signSave = -1;
         }
 
+        // DV : here make the signs of this, copyLN, and otherCopy 1. 
+        // Declare large numbers zero(0) and one(1);
+        while () {  // DV: compare otherCopy to zero using compareTo
+            //System.out.println("Whole number: " + copiedWholeNumber);
+            //System.out.println(i);
+            smaller.add(larger); // DV: add copiedLN to this instead.
+            // DV: subtract one from otherCopy using the subtract function. 
+            //System.out.println(smaller);
+        }
+
+        //copiedLN = new LargeNumber(copiedWholeNumber * smallerWhole);
+
+
+        // DV: move the out to the test function. You don't need to output the digits and sign.
         System.out.println("The multiplied number is: " + this); // test toString
         System.out.println("The multiplied number has " + this.getSize() + " digits.");
         if (copiedLN.getSign() > 0)
