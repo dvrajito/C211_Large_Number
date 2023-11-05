@@ -328,6 +328,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
 
         //copiedLN = new LargeNumber(copiedWholeNumber * smallerWhole);
 
+        // DV: set the sign of this with the value from signSave.
 
         // DV: move the out to the test function. You don't need to output the digits and sign.
         System.out.println("The multiplied number is: " + this); // test toString
