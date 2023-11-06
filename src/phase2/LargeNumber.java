@@ -189,7 +189,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
         // If so, subtraction method is carried out
         if (this.sign != other.sign) {
         	other.sign=-other.sign;
-            //this.subtract(other); /////// DV: this should not be commented out
+            this.subtract(other); /////// DV: this should not be commented out- KD: updated
             other.sign=-other.sign;
         }
         
