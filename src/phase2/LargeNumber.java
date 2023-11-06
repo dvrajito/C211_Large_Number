@@ -189,13 +189,13 @@ public class LargeNumber implements Comparable<LargeNumber> {
         // If so, subtraction method is carried out
         if (this.sign != other.sign) {
         	other.sign=-other.sign;
-            //this.subtract(other);
+            //this.subtract(other); /////// DV: this should not be commented out
             other.sign=-other.sign;
         }
         
         else {
-        	for (int i=(this.number.size()); i < (other.number).size(); i++) {
-        		(this.number).add(0);
+        	for (int i=(this.number.size()); i < (other.number).size(); i++) { // DV: add another similar loop
+        		(this.number).add(0);             // where you switch around this and other
         	}
             for (int i = 0; i < other.getSize(); i++) {
                 int sum = (this.number).get(i) +
@@ -225,7 +225,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
      * checking their sign.
      * if they different it convert into an Addition else, it compare the magnitude
      * and does
-     * the subtraction accordinly with help of subtractFromLarge Helper method
+     * the subtraction accordingly with help of subtractFromLarge Helper method
      *
      ******************************************************************************************/
     public void subtract(LargeNumber other) {
