@@ -339,17 +339,18 @@ public class LargeNumber implements Comparable<LargeNumber> {
             this.sign = -1;
         }
         
-//        int otherSign = other.sign;
-//        other.sign = this.sign;
-//        dividend.sign = 1;
-//        divisor.sign = 1;
+        //store other.sign in a local variable
+        int otherSign = other.sign;
         
+        //set signs equal to each other and make both positive
+        other.sign = this.sign;
+        dividend.sign = 1;
+        divisor.sign = 1;        
         
-        
-
-        
-
-
+//      this.number = 0;       < trying to initialize this as 0
+        int result = dividend.compareTo(divisor);
+        while (result == 1)
+            dividend.subtract(divisor);
 
     }
 
