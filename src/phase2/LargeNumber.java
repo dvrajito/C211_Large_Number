@@ -83,20 +83,20 @@ public class LargeNumber implements Comparable<LargeNumber> {
         // clear number arrayString
         if (number != null) {
             number.clear();
-        }else{
+        } else {
             number = new ArrayList<Integer>(0); // create an empty array
-        // check if the number in the beginning is pos or neg
-        if (n.charAt(0) == '-') {
-            sign = -1;
-        } else 
-            sign = 1;
-        
-        // add it to the arrayList one number at a time
-        for (int i = 0; i < n.length(); i++) {
-            char c = n.charAt(i);
-            int charNumber = Integer.parseInt("" + c);
-            number.add(0, charNumber);
-        	}
+            // check if the number in the beginning is pos or neg
+            if (n.charAt(0) == '-') {
+                sign = -1;
+            } else
+                sign = 1;
+
+            // add it to the arrayList one number at a time
+            for (int i = 0; i < n.length(); i++) {
+                char c = n.charAt(i);
+                int charNumber = Integer.parseInt("" + c);
+                number.add(0, charNumber);
+            }
         }
     }
 
@@ -291,59 +291,57 @@ public class LargeNumber implements Comparable<LargeNumber> {
         }
         return wholeNumber;
     }
-    
+
     // Team 4
     public void multiply(LargeNumber other) {
         LargeNumber copiedLN = new LargeNumber(this);
         LargeNumber otherCopy = new LargeNumber(other);
-        
+
         // Execute the multiplication *using* the copy
         // LargeNumber larger, smaller; DV : not needed - it doesn't make a difference
+        // JD: I'm not sure why this would not be needed, When you multiply large
+        // numbers,
+        // you need to have the larger number on the top. This is because you multiply
+        // the top number by each digit of the bottom number, and then add them
+        // together.
 
-//        if (this.compareTo(other) > 0) {
-//            larger = this;
-//            smaller = other;
-//        } else {
-//            larger = other;
-//            smaller = this;
-//        }
-        
+        // if (this.compareTo(other) > 0) {
+        // larger = this;
+        // smaller = other;
+        // } else {
+        // larger = other;
+        // smaller = this;
+        // }
+
         // Finding the final sign
-        int signSave = 0; // DV: save the sign in this variable
         if (this.getSign() == other.getSign()) {
-            signSave = 1;
+            this.sign = 1;
         } else {
-            signSave = -1;
+            this.sign = -1;
         }
 
-        // DV : here make the signs of this, copyLN, and otherCopy 1. 
+        // DV : here make the signs of this, copyLN, and otherCopy 1.
         // Declare large numbers zero(0) and one(1);
-        while () {  // DV: compare otherCopy to zero using compareTo
-            //System.out.println("Whole number: " + copiedWholeNumber);
-            //System.out.println(i);
-            smaller.add(larger); // DV: add copiedLN to this instead.
-            // DV: subtract one from otherCopy using the subtract function. 
-            //System.out.println(smaller);
+        // JD: ^ This was never mentioned and is not mentioned again
+        // What is the purpose of this?
+        while (this.compareTo(otherCopy)) { // DV: compare otherCopy to zero using compareTo
+            this.add(otherCopy);
+            // DV: subtract one from otherCopy using the subtract function.
+            // JD: Why? What does subtraction have to do with multiplication?
+            // Also the subtract function uses large numbers,
+            // similar to the add function...
+            this.subtract(otherCopy);
+            // JD: What good does this do?? This is just adding and subtracting the same
+            // number...
         }
 
-        //copiedLN = new LargeNumber(copiedWholeNumber * smallerWhole);
-
-        // DV: set the sign of this with the value from signSave.
-
-        // DV: move the out to the test function. You don't need to output the digits and sign.
-        System.out.println("The multiplied number is: " + this); // test toString
-        System.out.println("The multiplied number has " + this.getSize() + " digits.");
-        if (copiedLN.getSign() > 0)
-            System.out.println("The multiplied number is positive.");
-        else
-            System.out.println("The multiplied number is negative.");
     }
 
     // Team 5: Jack Ventura, Titus Duncan, Matthew Molewyk
     // Method that takes a number as a parameter and divides an existing number by
     // the parameter
     public void divide(LargeNumber other) {
-        //make copies of our objects
+        // make copies of our objects
         LargeNumber dividend = new LargeNumber(this);
         LargeNumber divisor = new LargeNumber(other);
 
@@ -353,18 +351,11 @@ public class LargeNumber implements Comparable<LargeNumber> {
         } else {
             this.sign = -1;
         }
-        
-//        int otherSign = other.sign;
-//        other.sign = this.sign;
-//        dividend.sign = 1;
-//        divisor.sign = 1;
-        
-        
-        
 
-        
-
-
+        // int otherSign = other.sign;
+        // other.sign = this.sign;
+        // dividend.sign = 1;
+        // divisor.sign = 1;
 
     }
 

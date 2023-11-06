@@ -24,31 +24,31 @@ public class TestNumber {
             System.out.println("The number is negative.");
         // testMultiply();
         // testCleanTrail();
-//        testCopy();
-//      testMultiply();
-//        testSubtract(350, 275);
-//        testSubtract(350, -275);
-//        testSubtract(350, 350);
-          testDivide();
-//        testPercent();
+        // testCopy();
+        // testMultiply();
+        // testSubtract(350, 275);
+        // testSubtract(350, -275);
+        // testSubtract(350, 350);
+        testDivide();
+        // testPercent();
 
         /*********************************************/
         // Testing using compareTo method
         // Test 1: Compare smaller number to bigger
-//        testCompare(123456789, 987654321);
-//        // Test 2: Compare bigger number to smaller
-//        testCompare(465798132, 1500);
-//        // Test 3: Compare equal numbers
-//        testCompare(97654, 97654);
-//        // Test 4: Comparison using negative numbers
-//        testCompare(-123456, -456789);
-//        // Test 5: Comparison with a negative number
-//        // as first input
-//        testCompare(-4569, 4569);
-//        // Test 6: Test while 2nd number is negative
-//        testCompare(123456, -456123);
-//        // Test 7: Comparison using leading zeros
-//        testCompare(00005, 00000005);
+        // testCompare(123456789, 987654321);
+        // // Test 2: Compare bigger number to smaller
+        // testCompare(465798132, 1500);
+        // // Test 3: Compare equal numbers
+        // testCompare(97654, 97654);
+        // // Test 4: Comparison using negative numbers
+        // testCompare(-123456, -456789);
+        // // Test 5: Comparison with a negative number
+        // // as first input
+        // testCompare(-4569, 4569);
+        // // Test 6: Test while 2nd number is negative
+        // testCompare(123456, -456123);
+        // // Test 7: Comparison using leading zeros
+        // testCompare(00005, 00000005);
         /*********************************************/
     }
 
@@ -56,16 +56,16 @@ public class TestNumber {
         LargeNumber n = new LargeNumber(2);
         LargeNumber o = new LargeNumber(2);
         n.multiply(o);
+        System.out.println("The multiplied number is: " + n);
     }
-    
-    //Team 5: Jack Ventura, Titus Duncan, Matthew Molewyk
-    //Method to test the Divide method in the LargeNumber class
-    public static void testDivide()
-    {
+
+    // Team 5: Jack Ventura, Titus Duncan, Matthew Molewyk
+    // Method to test the Divide method in the LargeNumber class
+    public static void testDivide() {
         LargeNumber dividend = new LargeNumber(50000);
         LargeNumber divisor = new LargeNumber(25000);
         dividend.divide(divisor);
-        
+
         // print statements for the value of quotient and its sign
         System.out.println("The quotient is: " + dividend);
         System.out.println("The sign of the quotient is " + divisor.sign);
@@ -89,9 +89,9 @@ public class TestNumber {
     }
 
     /*
-    * Team 2: Amstrong Akendung, Alyssa Martinez, Mario Garcilazo
-    * Test method to test subtraction Logic
-    */
+     * Team 2: Amstrong Akendung, Alyssa Martinez, Mario Garcilazo
+     * Test method to test subtraction Logic
+     */
     public static void testSubtract(int int1, int int2) {
         LargeNumber num1 = new LargeNumber(int1);
         LargeNumber num2 = new LargeNumber(int2);
@@ -147,9 +147,9 @@ public class TestNumber {
     public static void testCompare(int testInt1, int testInt2) {
         LargeNumber num1 = new LargeNumber(testInt1);
         LargeNumber num2 = new LargeNumber(testInt2);
-        
+
         int result = num1.compareTo(num2);
-        
+
         if (result == 1) {
             System.out.println(num1 + " is greater than " + num2);
         } else if (result == -1) {
