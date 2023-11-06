@@ -159,4 +159,22 @@ public class TestNumber {
             System.out.println(num1 + " is equal to " + num2);
         }
     }
+    
+     // Team 9: Gaven Van Skyock
+    public static void testPower() {
+        LargeNumber base = new LargeNumber(3); // Set the base to a positive number
+        LargeNumber exponent = new LargeNumber(3); // Set the exponent to a positive number
+        LargeNumber result = new LargeNumber();
+
+        System.out.println("Base: " + base);
+        System.out.println("Exponent: " + exponent);
+
+        base.power(exponent);
+
+        System.out.println("Result: " + base);
+
+        // You can add more test cases with different bases and exponents.
+    }
+  
+}
 }
