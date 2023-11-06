@@ -183,13 +183,20 @@ public class LargeNumber implements Comparable<LargeNumber> {
     // Team 1
     // Addition Function
     // Katie Delucio, Maddie Abbott, Tiffany Leister
-    public void add(LargeNumber other) {
+	public void add(LargeNumber other) {
         int nextDig = 0;
         // Checking if signs are different
         // If so, subtraction method is carried out
         if (this.sign != other.sign) {
-            this.subtract(other);
-        } else {
+        	other.sign=-other.sign;
+            //this.subtract(other);
+            other.sign=-other.sign;
+        }
+        
+        else {
+        	for (int i=(this.number.size()); i < (other.number).size(); i++) {
+        		(this.number).add(0);
+        	}
             for (int i = 0; i < other.getSize(); i++) {
                 int sum = (this.number).get(i) +
                         (other.number).get(i) + nextDig;
@@ -199,7 +206,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
                     nextDig = 0;
                 } else {
 
-                    (this.number).set(i, sum = 10);
+                    (this.number).set(i, sum - 10);
                     nextDig = 1;
                 }
             }
@@ -208,6 +215,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
                 (this.number).add(1);
             }
         }
+       this.cleanTrail();
     }
 
     /**********************************************************************************************

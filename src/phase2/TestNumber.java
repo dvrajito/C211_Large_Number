@@ -136,7 +136,7 @@ public class TestNumber {
     // Addition of Large Number Test
     // Output initial value and new value after addition
     public static void testAdd() {
-        LargeNumber addTestOne = new LargeNumber(6);
+        LargeNumber addTestOne = new LargeNumber(-20);
         LargeNumber addTestTwo = new LargeNumber(3);
         System.out.println("The current value of the number is " + addTestOne);
         addTestOne.add(addTestTwo);
