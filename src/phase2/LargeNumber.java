@@ -192,7 +192,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
             this.subtract(other); /////// DV: this should not be commented out- KD: updated
             other.sign=-other.sign;
         }
-        
+        //checking size and adding 0 if necessary
         else {
         	for (int i=(this.number.size()); i < (other.number).size(); i++) { // DV: add another similar loop
         		(this.number).add(0);             // where you switch around this and other
