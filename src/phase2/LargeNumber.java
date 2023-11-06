@@ -396,8 +396,48 @@ public class LargeNumber implements Comparable<LargeNumber> {
         }
     }
 
-    // Team 9
+    // Team 9: Gaven Van Skyock
     public void power(LargeNumber other) {
+	// Create a copy of the current LargeNumber
+        LargeNumber result = new LargeNumber();
 
+        // If the exponent (other) is 0, set the result to 1 and return
+        if (other.getSize() == 1 && other.number.get(0) == 0) {
+            this.init(1);
+            return;
+        }
+
+        // Check if the exponent is negative
+        boolean isNegativeExponent = other.getSign() < 0;
+
+        // Check if the current LargeNumber is negative
+        boolean isNegativeBase = this.getSign() < 0;
+
+        // Convert the exponent to a positive integer
+        int exponent = 0;
+        for (int i = 0; i < other.getSize(); i++) {
+            exponent = exponent * 10 + other.number.get(i);
+        }
+
+        // Initialize the result to 1
+        this.init(1);
+
+        while (exponent > 0) {
+            // If the exponent is odd, multiply the result by the base
+            if (exponent % 2 != 0) {
+                this.multiply(result);
+            }
+
+            // Divide the exponent by 2
+            exponent /= 2;
+
+            // Square the base (result)
+            result.multiply(result);
+        }
+
+        // If the base (this) was negative and the exponent was even, make the result positive
+        if (isNegativeBase && !isNegativeExponent && this.number.get(0) != 0) {
+            this.sign = 1;
+        }
     }
 }
