@@ -97,6 +97,7 @@ public class TestNumber {
         LargeNumber num2 = new LargeNumber(int2);
         // Subtract num2 from num1
         num1.subtract(num2);
+        System.out.println("ANS: "+num1);
     }
 
     public static void testString() {

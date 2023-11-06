@@ -242,13 +242,15 @@ public class LargeNumber implements Comparable<LargeNumber> {
 
             if (comparison == 0) {
                 // Numbers are equal, result should be zero
-                System.out.println("Subtraction result: 0");
+                this.init(0); // Set this LargeNumber to 0
             } else if (comparison > 0) {
                 // 'this' is larger, perform subtraction
                 subtractFromLarge(this.number, other.number);
             } else {
                 // 'other' is larger, perform subtraction and adjust the sign
-                subtractFromLarge(other.number, this.number);
+                LargeNumber temp = new LargeNumber(other); // Create a copy of 'other'
+                subtractFromLarge(temp.number, this.number);
+                this.init(temp); // Copy 'temp' back into 'this'
                 this.sign = -1;
             }
         }
@@ -259,6 +261,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
     // LargeNumbers.
     private void subtractFromLarge(ArrayList<Integer> from, ArrayList<Integer> value) {
         int carry = 0;
+        int leadingZeros = 0;
         // return the max number of digit btw this and Other
         int maxDigits = Math.max(from.size(), value.size());
 
@@ -275,19 +278,23 @@ public class LargeNumber implements Comparable<LargeNumber> {
                 carry = 0;
             }
 
+            if (result != 0) {
+                leadingZeros = 0;
+            } else if (result == 0 && leadingZeros >= 0) {
+                leadingZeros++;
+            }
+
             if (i < from.size()) {
                 from.set(i, result);
             } else {
                 from.add(result);
             }
         }
-
-        // Print the result
-        System.out.print("Subtraction result: ");
-        for (int i = from.size() - 1; i >= 0; i--) {
-            System.out.print(from.get(i));
+          // Remove leading zeros
+        while (leadingZeros > 0) {
+            from.remove(from.size() - 1);
+            leadingZeros--;
         }
-        System.out.println();
     }
 
     // Team 4
