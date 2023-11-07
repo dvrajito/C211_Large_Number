@@ -160,7 +160,7 @@ public class TestNumber {
         }
     }
     
-     // Team 9: Gaven Van Skyock
+     // Team 9: Gaven Van Skyock, Thomas Polega
     public static void testPower() {
         LargeNumber base = new LargeNumber(3); // Set the base to a positive number
         LargeNumber exponent = new LargeNumber(3); // Set the exponent to a positive number
