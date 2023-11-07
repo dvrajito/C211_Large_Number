@@ -396,7 +396,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
         }
     }
 
-    // Team 9: Gaven Van Skyock
+    // Team 9: Gaven Van Skyock, Thomas Polega
     public void power(LargeNumber other) {
 	// Create a copy of the current LargeNumber
         LargeNumber result = new LargeNumber();
