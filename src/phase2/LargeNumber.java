@@ -194,7 +194,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
         }
         //checking size and adding 0 if necessary
         	for (int i=(this.number.size()); i < (other.number).size(); i++) { // DV: add another similar loop
-        		(this.number).add(0);             // where you switch around this and other
+        		(this.number).add(0);             // where you switch around this and other - KD: done, thanks!
         	}
 		for (int i=(other.number.size()); i < (this.number).size(); i++) { 
                 (other.number).add(0);             
