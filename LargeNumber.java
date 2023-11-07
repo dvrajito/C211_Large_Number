@@ -279,18 +279,14 @@ public class LargeNumber implements Comparable<LargeNumber> {
      // Team 5: Jack Ventura, Titus Duncan, Matthew Molewyk
      //Method that takes a number as a parameter and divides an existing number by the parameter 
      public void divide(LargeNumber other) {
-         LargeNumber firstNumber = this;
+         firstNumber = new LargeNumber(this);
          
          //check signs of each number
-         if (firstNumber.getSign() == other.getSign()) {
-             firstNumber.sign = 1;
+         if (this.getSign() == other.getSign()) {
+             this.sign = 1;
          } else {
-             firstNumber.sign = -1;
-         }
-         
-         //print statements for the value of quotient and its sign
-         System.out.println("The quotient is: " + firstNumber);
-         System.out.println("The sign of the quotient is " + firstNumber.sign);   
+             this.sign = -1;
+         } 
 
      }
 
