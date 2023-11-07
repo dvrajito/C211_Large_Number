@@ -78,7 +78,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
         init(n);
     }
 
-    // Team 6
+    // Team 6 - Done
     public void init(String n) {
         // clear number arrayString
         if (number != null) {
@@ -100,7 +100,6 @@ public class LargeNumber implements Comparable<LargeNumber> {
                 number.add(0, charNumber);
             }
         }
-
     }
 
     // find out the number of digits
@@ -124,7 +123,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
     }
 
     /********************************************************/
-    // Team 3: Trace Crafton, Jon Fulkerson, Stephen Torrijas
+    // Team 3: Trace Crafton, Jon Fulkerson, Stephen Torrijas - Done
     // Function allowing us to compare two arrays as integers
     // Should return 1 if this is larger than other, 0 if they are equal
     public int compareTo(LargeNumber o) {
@@ -183,43 +182,42 @@ public class LargeNumber implements Comparable<LargeNumber> {
         return 0; // Both numbers are equal
     }
 
-    // Team 1
+    // Team 1 - Done
     // Addition Function
     // Katie Delucio, Maddie Abbott, Tiffany Leister
-	public void add(LargeNumber other) {
+    public void add(LargeNumber other) {
         int nextDig = 0;
         // Checking if signs are different
         // If so, subtraction method is carried out
         if (this.sign != other.sign) {
-        	other.sign=-other.sign;
-            this.subtract(other); 
-            other.sign=-other.sign;
+            other.sign = -other.sign;
+            this.subtract(other);
+            other.sign = -other.sign;
         }
-        //checking size and adding 0 if necessary
-        	for (int i=(this.number.size()); i < (other.number).size(); i++) { // DV: add another similar loop
-        		(this.number).add(0);             // where you switch around this and other - KD: done, thanks!
-        	}
-		for (int i=(other.number.size()); i < (this.number).size(); i++) { 
-                (other.number).add(0);             
-            }
-            for (int i = 0; i < other.getSize(); i++) {
-                int sum = (this.number).get(i) +
-                        (other.number).get(i) + nextDig;
-                // If sum of two digits is larger than 10, store result
-                if (sum < 10) {
-                    (this.number).set(i, sum);
-                    nextDig = 0;
-                } else {
+        // checking size and adding 0 if necessary
+        for (int i = (this.number.size()); i < (other.number).size(); i++) { 
+            (this.number).add(0); 
+        }
+        for (int i = (other.number.size()); i < (this.number).size(); i++) {
+            (other.number).add(0);
+        }
+        for (int i = 0; i < other.getSize(); i++) {
+            int sum = (this.number).get(i) + (other.number).get(i) + nextDig;
+            // If sum of two digits is larger than 10, store result
+            if (sum < 10) {
+                (this.number).set(i, sum);
+                nextDig = 0;
+            } else {
 
-                    (this.number).set(i, sum - 10);
-                    nextDig = 1;
-                }
+                (this.number).set(i, sum - 10);
+                nextDig = 1;
             }
-            // Add new element to array number
-            if (nextDig == 1) {
-                (this.number).add(1);
-            }
-       this.cleanTrail();
+        }
+        // Add new element to array number
+        if (nextDig == 1) {
+            (this.number).add(1);
+        }
+        this.cleanTrail();
     }
 
     /**********************************************************************************************
