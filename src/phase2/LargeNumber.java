@@ -370,7 +370,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
         this.subtract(copy);
     }
 
-    // Team 8: Gavin Power, Brandon Jones, Charlie Kinnett
+    // Team 8: Gavin Power, Brandon Jones, Charlie Kinnett - Done
     // This is a method that removes all trailing 0s in a LargeNumber object
     // with a test in TestNumber.java titled testCleanTrail
     public void cleanTrail() {
