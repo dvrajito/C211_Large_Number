@@ -10,8 +10,6 @@ package phase2;
 
 import java.util.Scanner;
 
-import largeNumberTest.LargeNumber;
-
 public class TestNumber {
 
     // A quick test for the methods so far

@@ -12,8 +12,6 @@ package phase2;
 import java.util.ArrayList; // import the ArrayList class
 import java.util.Collections;
 
-import largeNumberTest.LargeNumber;
-
 // A class designed to store large integers in an array called number
 // with the sign stored in the attribute sign.
 public class LargeNumber implements Comparable<LargeNumber> {
@@ -316,7 +314,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
         LargeNumber copiedLN = new LargeNumber(this);
         LargeNumber otherCopy = new LargeNumber(other);
         int saveSign; // will hold the final sign for this object
-        LargeNumber zero, one;
+        LargeNumber one;
 
         // Finding the final sign
         if (this.getSign() == other.getSign()) {
@@ -328,7 +326,6 @@ public class LargeNumber implements Comparable<LargeNumber> {
         copiedLN.sign = 1; // multiply the positive numbers
         this.sign = 1;
         otherCopy.sign = 1;
-        zero = new LargeNumber(0);
         one = new LargeNumber(1);
         
         while (otherCopy.compareTo(one) > 0) { // while otherCopy > 1
