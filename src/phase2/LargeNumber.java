@@ -82,22 +82,25 @@ public class LargeNumber implements Comparable<LargeNumber> {
     public void init(String n) {
         // clear number arrayString
         if (number != null) {
-            number.clear();
+        	number.clear();
         } else {
-            number = new ArrayList<Integer>(0); // create an empty array
-            // check if the number in the beginning is pos or neg
-            if (n.charAt(0) == '-') {
-                sign = -1;
-            } else
-                sign = 1;
-
-            // add it to the arrayList one number at a time
-            for (int i = 0; i < n.length(); i++) {
-                char c = n.charAt(i);
-                int charNumber = Integer.parseInt("" + c);
-                number.add(0, charNumber);
-            }
+        	number = new ArrayList<Integer>(0); // create an empty array
+	}
+	// check if the number in the beginning is pos or neg
+        if (n.charAt(0) == '-') {
+        	sign = -1;
+        } else {
+        	sign = 1;
+	}
+        // add it to the arrayList one number at a time
+        for (int i = 0; i < n.length(); i++) {
+        	char c = n.charAt(i);
+		if (Character.isDigit(c) == true){ //test to make sure that each item is a character
+                	int charNumber = Integer.parseInt("" + c);
+               		number.add(0, charNumber);
+		} 
         }
+        
     }
 
     // find out the number of digits
