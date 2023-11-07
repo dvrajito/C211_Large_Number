@@ -82,25 +82,25 @@ public class LargeNumber implements Comparable<LargeNumber> {
     public void init(String n) {
         // clear number arrayString
         if (number != null) {
-        	number.clear();
+            number.clear();
         } else {
-        	number = new ArrayList<Integer>(0); // create an empty array
-	}
-	// check if the number in the beginning is pos or neg
+            number = new ArrayList<Integer>(0); // create an empty array
+        }
+        // check if the number in the beginning is pos or neg
         if (n.charAt(0) == '-') {
-        	sign = -1;
+            sign = -1;
         } else {
-        	sign = 1;
-	}
+            sign = 1;
+        }
         // add it to the arrayList one number at a time
         for (int i = 0; i < n.length(); i++) {
-        	char c = n.charAt(i);
-		if (Character.isDigit(c) == true){ //test to make sure that each item is a character
-                	int charNumber = Integer.parseInt("" + c);
-               		number.add(0, charNumber);
-		} 
+            char c = n.charAt(i);
+            if (Character.isDigit(c) == true) { // test to make sure that each item is a character
+                int charNumber = Integer.parseInt("" + c);
+                number.add(0, charNumber);
+            }
         }
-        
+
     }
 
     // find out the number of digits
@@ -192,7 +192,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
         // If so, subtraction method is carried out
         if (this.sign != other.sign) {
         	other.sign=-other.sign;
-            this.subtract(other); /////// DV: this should not be commented out- KD: updated
+            this.subtract(other); 
             other.sign=-other.sign;
         }
         //checking size and adding 0 if necessary
@@ -343,7 +343,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
         // Declare large numbers zero(0) and one(1);
         // JD: ^ This was never mentioned and is not mentioned again
         // What is the purpose of this?
-        while (this.compareTo(otherCopy)) { // DV: compare otherCopy to zero using compareTo
+        while (this.compareTo(otherCopy) > 0) { // DV: compare otherCopy to zero using compareTo
             this.add(otherCopy);
             // DV: subtract one from otherCopy using the subtract function.
             // JD: Why? What does subtraction have to do with multiplication?
