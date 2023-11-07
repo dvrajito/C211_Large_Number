@@ -375,6 +375,10 @@ public class LargeNumber implements Comparable<LargeNumber> {
     }
 
     // Team 7: Daniel Guernsey, Jiya Stroder, Jennifer Rose
+    // We need to cut the quotient off at the decimal, but can't see
+    // in the divide function how to manage that
+    // then run the multiply function of whole number(quotient) times whole number(divisor)
+    // and subtract that from the original LargeNumber(this)
     public void percent(LargeNumber other) {
         LargeNumber copy = new LargeNumber(this);
         copy.divide(other);
