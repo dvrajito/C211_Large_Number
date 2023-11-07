@@ -12,6 +12,8 @@ package phase2;
 import java.util.ArrayList; // import the ArrayList class
 import java.util.Collections;
 
+import largeNumberTest.LargeNumber;
+
 // A class designed to store large integers in an array called number
 // with the sign stored in the attribute sign.
 public class LargeNumber implements Comparable<LargeNumber> {
@@ -309,49 +311,32 @@ public class LargeNumber implements Comparable<LargeNumber> {
         return wholeNumber;
     }
 
-    // Team 4
+ // Team 4 - Done
     public void multiply(LargeNumber other) {
         LargeNumber copiedLN = new LargeNumber(this);
         LargeNumber otherCopy = new LargeNumber(other);
-
-        // Execute the multiplication *using* the copy
-        // LargeNumber larger, smaller; DV : not needed - it doesn't make a difference
-        // JD: I'm not sure why this would not be needed, When you multiply large
-        // numbers,
-        // you need to have the larger number on the top. This is because you multiply
-        // the top number by each digit of the bottom number, and then add them
-        // together.
-
-        // if (this.compareTo(other) > 0) {
-        // larger = this;
-        // smaller = other;
-        // } else {
-        // larger = other;
-        // smaller = this;
-        // }
+        int saveSign; // will hold the final sign for this object
+        LargeNumber zero, one;
 
         // Finding the final sign
         if (this.getSign() == other.getSign()) {
-            this.sign = 1;
+            saveSign = 1;
         } else {
-            this.sign = -1;
+            saveSign = -1;
         }
 
-        // DV : here make the signs of this, copyLN, and otherCopy 1.
-        // Declare large numbers zero(0) and one(1);
-        // JD: ^ This was never mentioned and is not mentioned again
-        // What is the purpose of this?
-        while (this.compareTo(otherCopy) > 0) { // DV: compare otherCopy to zero using compareTo
-            this.add(otherCopy);
-            // DV: subtract one from otherCopy using the subtract function.
-            // JD: Why? What does subtraction have to do with multiplication?
-            // Also the subtract function uses large numbers,
-            // similar to the add function...
-            this.subtract(otherCopy);
-            // JD: What good does this do?? This is just adding and subtracting the same
-            // number...
+        copiedLN.sign = 1; // multiply the positive numbers
+        this.sign = 1;
+        otherCopy.sign = 1;
+        zero = new LargeNumber(0);
+        one = new LargeNumber(1);
+        
+        while (otherCopy.compareTo(one) > 0) { // while otherCopy > 1
+            this.add(copiedLN);
+            otherCopy.subtract(one); // otherCopy--
         }
 
+        this.sign = saveSign;
     }
 
     // Team 5: Jack Ventura, Titus Duncan, Matthew Molewyk

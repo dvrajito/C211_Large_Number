@@ -10,6 +10,8 @@ package phase2;
 
 import java.util.Scanner;
 
+import largeNumberTest.LargeNumber;
+
 public class TestNumber {
 
     // A quick test for the methods so far
@@ -29,6 +31,7 @@ public class TestNumber {
         // testSubtract(350, 275);
         // testSubtract(350, -275);
         // testSubtract(350, 350);
+        testMultiply();
         testDivide();
         // testPercent();
 
@@ -52,9 +55,10 @@ public class TestNumber {
         /*********************************************/
     }
 
+    // Team 6 - test for the multiplication
     public static void testMultiply() {
-        LargeNumber n = new LargeNumber(2);
-        LargeNumber o = new LargeNumber(2);
+        LargeNumber n = new LargeNumber(-25123);
+        LargeNumber o = new LargeNumber(-572148);
         n.multiply(o);
         System.out.println("The multiplied number is: " + n);
     }
