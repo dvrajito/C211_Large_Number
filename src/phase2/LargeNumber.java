@@ -193,10 +193,12 @@ public class LargeNumber implements Comparable<LargeNumber> {
             other.sign=-other.sign;
         }
         //checking size and adding 0 if necessary
-        else {
         	for (int i=(this.number.size()); i < (other.number).size(); i++) { // DV: add another similar loop
         		(this.number).add(0);             // where you switch around this and other
         	}
+		for (int i=(other.number.size()); i < (this.number).size(); i++) { 
+                (other.number).add(0);             
+            }
             for (int i = 0; i < other.getSize(); i++) {
                 int sum = (this.number).get(i) +
                         (other.number).get(i) + nextDig;
@@ -214,7 +216,6 @@ public class LargeNumber implements Comparable<LargeNumber> {
             if (nextDig == 1) {
                 (this.number).add(1);
             }
-        }
        this.cleanTrail();
     }
 
