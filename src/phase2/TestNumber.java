@@ -15,8 +15,8 @@ public class TestNumber {
     // A quick test for the methods so far
     public static void main(String[] args) {
 
-        testConstructorInt();
-        
+        // testConstructorInt();
+        testPower();
         // testMultiply();
         // testCleanTrail();
         // testCopy();
@@ -162,7 +162,6 @@ public class TestNumber {
     public static void testPower() {
         LargeNumber base = new LargeNumber(3); // Set the base to a positive number
         LargeNumber exponent = new LargeNumber(3); // Set the exponent to a positive number
-        LargeNumber result = new LargeNumber();
 
         System.out.println("Base: " + base);
         System.out.println("Exponent: " + exponent);

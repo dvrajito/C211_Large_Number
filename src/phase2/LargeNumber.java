@@ -384,48 +384,55 @@ public class LargeNumber implements Comparable<LargeNumber> {
         }
     }
 
+    // Check if the number is equal to 0.
+    public boolean isZero() {
+        return getSize() == 1 && number.get(0) == 0;
+    }
+    
     // Team 9: Gaven Van Skyock, Thomas Polega
     public void power(LargeNumber other) {
-	// Create a copy of the current LargeNumber
-        LargeNumber result = new LargeNumber();
 
+        if (this.isZero()) // 0 to any power is 0
+            return;
+        
         // If the exponent (other) is 0, set the result to 1 and return
-        if (other.getSize() == 1 && other.number.get(0) == 0) {
+        if (other.isZero()) {
             this.init(1);
             return;
         }
 
         // Check if the exponent is negative
-        boolean isNegativeExponent = other.getSign() < 0;
-
-        // Check if the current LargeNumber is negative
-        boolean isNegativeBase = this.getSign() < 0;
-
-        // Convert the exponent to a positive integer
-        int exponent = 0;
-        for (int i = 0; i < other.getSize(); i++) {
-            exponent = exponent * 10 + other.number.get(i);
+        // An non-0 integer to a negative power is less than 1 in absolute value
+        // so it truncates to 0.
+        if (other.getSign() < 0) {
+            this.init(0);
+            return;
         }
 
+        LargeNumber base = new LargeNumber(this);
+        LargeNumber exponent = new LargeNumber(other);
+        LargeNumber zero = new LargeNumber(0);
+        LargeNumber two = new LargeNumber(2);
+        
         // Initialize the result to 1
         this.init(1);
 
-        while (exponent > 0) {
+        while (exponent.compareTo(zero) > 0) {
             // If the exponent is odd, multiply the result by the base
-            if (exponent % 2 != 0) {
-                this.multiply(result);
+            if (exponent.number.get(0) % 2 != 0) { // is the exponent odd?
+                this.multiply(base);
             }
 
             // Divide the exponent by 2
-            exponent /= 2;
+            exponent.divide(two);
 
             // Square the base (result)
-            result.multiply(result);
+            base.multiply(base);
         }
 
         // If the base (this) was negative and the exponent was even, make the result positive
-        if (isNegativeBase && !isNegativeExponent && this.number.get(0) != 0) {
-            this.sign = 1;
-        }
+        // if (this.sign < 0 && other.number.get(0) % 2 == 0) { // - not necessary
+        //     this.sign = 1;
+        //}
     }
 }
