@@ -3,7 +3,7 @@
  * C211 Fall 2023
  * Project Phase 2
  * Authors: Dana Vrajitoru, Gavin Power, Brandon Jones, Charlie Kinnett, Tiffany Leister, Katie DeLucio, Madeline Abbott, Jack Ventura, Matthew Molewyk, Titus Duncan
- * Authors: Dana Vrajitoru, Gavin Power, Brandon Jones, Charlie Kinnett, Tiffany Leister, Katie DeLucio, Madeline Abbott, Jack Ventura, Matthew Molewyk, Titus Duncan, Daniel Guernsey, Jiya Stroder, Jennifer Rose, Gaven Van Skyock
+ * Authors: Dana Vrajitoru, Gavin Power, Brandon Jones, Charlie Kinnett, Tiffany Leister, Katie DeLucio, Madeline Abbott, Jack Ventura, Matthew Molewyk, Titus Duncan, Daniel Guernsey, Jiya Stroder, Jennifer Rose, Gaven Van Skyock, Genevieve Mathews
  * Class: LargeNumber
  * Implements an integer number of an unlimited size and
  * a few useful arithmetic operations.
@@ -247,7 +247,14 @@ public class LargeNumber implements Comparable<LargeNumber> {
          }
          System.out.println();
      }
-     // Team 4
+
+     /**********************************************************************************************
+     * Team 4
+     * Author :: Jaecob Dobler, Genevieve Mathews
+     * Description :: Multiplication function that uses a loop to add a number to itself "this" many times.
+     *
+     ******************************************************************************************/
+ // Team 4
      public void multiply(LargeNumber other) {
          LargeNumber copiedLN = this;
          // Execute the multiplication on the copy
@@ -272,18 +279,14 @@ public class LargeNumber implements Comparable<LargeNumber> {
      // Team 5: Jack Ventura, Titus Duncan, Matthew Molewyk
      //Method that takes a number as a parameter and divides an existing number by the parameter 
      public void divide(LargeNumber other) {
-         LargeNumber firstNumber = this;
+         firstNumber = new LargeNumber(this);
          
          //check signs of each number
-         if (firstNumber.getSign() == other.getSign()) {
-             firstNumber.sign = 1;
+         if (this.getSign() == other.getSign()) {
+             this.sign = 1;
          } else {
-             firstNumber.sign = -1;
-         }
-         
-         //print statements for the value of quotient and its sign
-         System.out.println("The quotient is: " + firstNumber);
-         System.out.println("The sign of the quotient is " + firstNumber.sign);   
+             this.sign = -1;
+         } 
 
      }
 

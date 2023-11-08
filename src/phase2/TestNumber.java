@@ -15,13 +15,8 @@ public class TestNumber {
     // A quick test for the methods so far
     public static void main(String[] args) {
 
-        LargeNumber n = new LargeNumber(628451);
-        System.out.println("The number is: " + n); // test toString
-        System.out.println("The number has " + n.getSize() + " digits.");
-        if (n.getSign() > 0)
-            System.out.println("The number is positive.");
-        else
-            System.out.println("The number is negative.");
+        // testConstructorInt();
+        testPower();
         // testMultiply();
         // testCleanTrail();
         // testCopy();
@@ -29,6 +24,7 @@ public class TestNumber {
         // testSubtract(350, 275);
         // testSubtract(350, -275);
         // testSubtract(350, 350);
+        testMultiply();
         testDivide();
         // testPercent();
 
@@ -52,9 +48,10 @@ public class TestNumber {
         /*********************************************/
     }
 
+    // Team 6 - test for the multiplication
     public static void testMultiply() {
-        LargeNumber n = new LargeNumber(2);
-        LargeNumber o = new LargeNumber(2);
+        LargeNumber n = new LargeNumber(-25123);
+        LargeNumber o = new LargeNumber(-572148);
         n.multiply(o);
         System.out.println("The multiplied number is: " + n);
     }
@@ -97,6 +94,7 @@ public class TestNumber {
         LargeNumber num2 = new LargeNumber(int2);
         // Subtract num2 from num1
         num1.subtract(num2);
+        System.out.println("ANS: "+num1);
     }
 
     public static void testString() {
@@ -120,6 +118,7 @@ public class TestNumber {
             System.out.println("The number is positive.");
         else
             System.out.println("The number is negative.");
+        System.out.println(n.toInt());
     }
 
     // Tests the copy constructor
@@ -158,4 +157,20 @@ public class TestNumber {
             System.out.println(num1 + " is equal to " + num2);
         }
     }
+    
+     // Team 9: Gaven Van Skyock, Thomas Polega
+    public static void testPower() {
+        LargeNumber base = new LargeNumber(3); // Set the base to a positive number
+        LargeNumber exponent = new LargeNumber(3); // Set the exponent to a positive number
+
+        System.out.println("Base: " + base);
+        System.out.println("Exponent: " + exponent);
+
+        base.power(exponent);
+
+        System.out.println("Result: " + base);
+
+        // You can add more test cases with different bases and exponents.
+    }
+  
 }
