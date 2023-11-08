@@ -299,12 +299,12 @@ public class LargeNumber implements Comparable<LargeNumber> {
         }
     }
 
-    // Team 4
+    // Team 4 and 9
     public int toInt() {
         int wholeNumber = 0;
 
-        for (int i = this.getSize(); i > 0; i--) {
-            wholeNumber += this.number.get(i - 1) * (int) Math.pow(10, i - 1);
+        for (int i = this.getSize() - 1; i >= 0; i--) {
+            wholeNumber = wholeNumber * 10 + number.get(i);
         }
         return wholeNumber;
     }

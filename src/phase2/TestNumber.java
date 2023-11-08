@@ -15,13 +15,8 @@ public class TestNumber {
     // A quick test for the methods so far
     public static void main(String[] args) {
 
-        LargeNumber n = new LargeNumber(628451);
-        System.out.println("The number is: " + n); // test toString
-        System.out.println("The number has " + n.getSize() + " digits.");
-        if (n.getSign() > 0)
-            System.out.println("The number is positive.");
-        else
-            System.out.println("The number is negative.");
+        testConstructorInt();
+        
         // testMultiply();
         // testCleanTrail();
         // testCopy();
@@ -123,6 +118,7 @@ public class TestNumber {
             System.out.println("The number is positive.");
         else
             System.out.println("The number is negative.");
+        System.out.println(n.toInt());
     }
 
     // Tests the copy constructor
