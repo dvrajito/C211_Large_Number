@@ -241,7 +241,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
             } else {
                 // 'other' is larger, perform subtraction and adjust the sign
                 subtractFromLarge(other.number, this.number);
-                this.sign = -1;
+                this.sign = this.sign == -1 ? 1 : -1;
             }
         }
 
