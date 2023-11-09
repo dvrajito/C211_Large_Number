@@ -259,8 +259,9 @@ public class LargeNumber implements Comparable<LargeNumber> {
             int comparison = this.compareTo(other);
 
             if (comparison == 0) {
+                this.init(0);
                 // Numbers are equal, result should be zero
-                System.out.println("Subtraction result: 0");
+                //System.out.println("Subtraction result: 0");
             } else if (comparison > 0) {
                 // 'this' is larger, perform subtraction
                 subtractFromLarge(this.number, other.number);
@@ -301,11 +302,11 @@ public class LargeNumber implements Comparable<LargeNumber> {
         }
 
         // Print the result
-        System.out.print("Subtraction result: ");
-        for (int i = from.size() - 1; i >= 0; i--) {
-            System.out.print(from.get(i));
-        }
-        System.out.println();
+        //System.out.print("Subtraction result: ");
+//        for (int i = from.size() - 1; i >= 0; i--) {
+//            System.out.print(from.get(i));
+//        }
+//        System.out.println();
     }
 
     // Team 4 - Done
