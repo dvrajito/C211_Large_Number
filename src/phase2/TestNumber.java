@@ -16,6 +16,10 @@ public class TestNumber {
     public static void main(String[] args) {
 
         // testConstructorInt();
+        testSubtract(-350, -1275); // should answer 925
+        testSubtract(350, 1275);   // should answer -925
+        testSubtract(-350, -125);  // should answer -225
+        testSubtract(350, 125);    // should answer 225
         testPower();
         // testMultiply();
         // testCleanTrail();

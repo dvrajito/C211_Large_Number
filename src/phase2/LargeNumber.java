@@ -196,19 +196,27 @@ public class LargeNumber implements Comparable<LargeNumber> {
         return 0; // Both numbers are equal
     }
 
-    // Team 1 
+    // Team 1
     // Addition Function
-    // Katie Delucio, Maddie Abbott, Tiffany Leister
+    // Katie Delucio, Maddie Abbott, Tiffany Leister - Done
     public void add(LargeNumber other) {
         int nextDig = 0;
         // Checking if signs are different
         // If so, subtraction method is carried out
         if (this.sign != other.sign) {
+            other.sign = -other.sign;
             this.subtract(other);
+            other.sign = -other.sign;
         } else {
+            // checking size and adding 0 if necessary
+            for (int i = (this.number.size()); i < (other.number).size(); i++) {
+                (this.number).add(0);
+            }
+            for (int i = (other.number.size()); i < (this.number).size(); i++) {
+                (other.number).add(0);
+            }
             for (int i = 0; i < other.getSize(); i++) {
-                int sum = (this.number).get(i) +
-                        (other.number).get(i) + nextDig;
+                int sum = (this.number).get(i) + (other.number).get(i) + nextDig;
                 // If sum of two digits is larger than 10, store result
                 if (sum < 10) {
                     (this.number).set(i, sum);
@@ -224,7 +232,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
                 (this.number).add(1);
             }
         }
-        
+
         other.cleanTrail();
     }
 
