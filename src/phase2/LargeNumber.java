@@ -38,11 +38,16 @@ public class LargeNumber implements Comparable<LargeNumber> {
             sign = -1;
         } else
             sign = 1;
+        
         if (number != null)
             number.clear(); // Clear existing data if any
         else
             number = new ArrayList<Integer>(0); // create an empty array
 
+        if (n == 0) { // the while loop by itself would leave the array empty
+            number.add(0);
+        }
+        
         // Convert the n to decimals and add it to the array one by one
         while (n > 0) {
             int dec = n % 10;
