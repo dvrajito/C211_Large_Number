@@ -329,7 +329,8 @@ public class LargeNumber implements Comparable<LargeNumber> {
     }
 
     // Team 4 - Done
-    public void multiply(LargeNumber other) {
+    // Simpler solution but not very efficient
+    public void multiply1(LargeNumber other) {
         LargeNumber copiedLN = new LargeNumber(this);
         LargeNumber otherCopy = new LargeNumber(other);
         int saveSign; // will hold the final sign for this object
@@ -355,7 +356,45 @@ public class LargeNumber implements Comparable<LargeNumber> {
         
         this.sign = saveSign;
     }
+    
+    // More efficient solution
+    public void multiply(LargeNumber other) {
+        int saveSign; // will hold the final sign for this object
+        LargeNumber thisCopy, temp, otherCopy;
+        int carry, sum, digit;
 
+        // Finding the final sign
+        if (this.getSign() == other.getSign()) {
+            saveSign = 1;
+        } else {
+            saveSign = -1;
+        }
+
+        thisCopy = new LargeNumber(this);
+        otherCopy = new LargeNumber(other); // in case this and other are the same object
+        temp = new LargeNumber(0);
+        
+        this.init(0);
+        for (int i = 0; i < otherCopy.getSize(); i++) { // multiply thisCopy by other[i]
+            carry = 0;
+            temp.number.clear(); // store the multiplication result in temp
+            digit = otherCopy.number.get(i);
+            for (int j = 0; j < thisCopy.getSize(); j++) {
+                sum = digit * thisCopy.number.get(j) + carry;
+                temp.number.add(sum % 10);
+                carry = sum / 10;
+            }
+            // Add the remaining carry at the end
+            if (carry > 0)
+                temp.number.add(carry);
+            this.add(temp); // add it to the result
+
+            thisCopy.number.add(0, 0); // multiply by 10 for the next iteration
+        }
+
+        this.sign = saveSign; // set the sign at the end
+    }
+    
     // Team 5: Jack Ventura, Titus Duncan, Matthew Molewyk - Done
     // Method that takes a number as a parameter and divides an existing number by
     // the parameter
@@ -393,6 +432,8 @@ public class LargeNumber implements Comparable<LargeNumber> {
         copy.divide(other);
         copy.multiply(other);
         this.subtract(copy);
+
+        // n - (n / m) * m
     }
 
     // Team 8: Gavin Power, Brandon Jones, Charlie Kinnett - Done
