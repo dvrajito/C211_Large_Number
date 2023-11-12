@@ -76,7 +76,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
             number.add(i);
 
         // use copy from Collections - something wrong with the size
-        // Collections.copy(number, other.number);
+        // Collections.copy(number, other.number); 
     }
 
     // Team 6
@@ -101,7 +101,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
         // add it to the arrayList one number at a time
         for (int i = 0; i < n.length(); i++) {
             char c = n.charAt(i);
-            if (Character.isDigit(c)) {
+            if (Character.isDigit(c)) { // test to make sure that each item is a character
                 int charNumber = Integer.parseInt("" + c);
                 number.add(0, charNumber);
             }
@@ -157,6 +157,16 @@ public class LargeNumber implements Comparable<LargeNumber> {
             return 1; // This is positive, o is negative
         } else if (thisSign < otherSign) {
             return -1; // This is negative, o is positive
+        }
+        
+        // Dealing with negative numbers properly:
+        if (thisSign < 0) { // and o.sign < 0
+            this.sign = 1;
+            o.sign = 1;
+            int result = this.compareTo(o);
+            this.sign = -1;
+            o.sign = -1;
+            return -result; // the opposite is true for negative numbers
         }
 
         // Skip trailing zeros by decrementing the index if
@@ -224,7 +234,6 @@ public class LargeNumber implements Comparable<LargeNumber> {
                     (this.number).set(i, sum);
                     nextDig = 0;
                 } else {
-
                     (this.number).set(i, sum - 10);
                     nextDig = 1;
                 }
@@ -248,7 +257,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
      * the subtraction accordingly with help of subtractFromLarge Helper method
      *
      ******************************************************************************************/
-    public void subtract(LargeNumber other) {
+     public void subtract(LargeNumber other) {
         // Check if signs are different
         if (this.sign != other.sign) {
             // Change the sign of 'other' and Perform Addition
@@ -268,9 +277,12 @@ public class LargeNumber implements Comparable<LargeNumber> {
                 // 'this' is larger, perform subtraction
                 subtractFromLarge(this.number, other.number);
             } else {
-                // 'other' is larger, perform subtraction and adjust the sign
-                subtractFromLarge(other.number, this.number);
-                this.sign = this.sign == -1 ? 1 : -1;
+                // 'other' is larger, perform subtraction using copies and adjust the sign
+                LargeNumber thisCopy = new LargeNumber(this);
+                LargeNumber otherCopy = new LargeNumber(other);
+                subtractFromLarge(otherCopy.number, thisCopy.number);
+                this.init(otherCopy);
+                this.sign = -this.sign;
             }
         }
 
@@ -302,13 +314,6 @@ public class LargeNumber implements Comparable<LargeNumber> {
                 from.add(result);
             }
         }
-
-        // Print the result
-        //System.out.print("Subtraction result: ");
-//        for (int i = from.size() - 1; i >= 0; i--) {
-//            System.out.print(from.get(i));
-//        }
-//        System.out.println();
     }
 
     // Team 4 - Done
