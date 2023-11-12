@@ -44,6 +44,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
         else
             number = new ArrayList<Integer>(0); // create an empty array
 
+		// If n is 0 the while loop will not store anything in the array
         if (n == 0) { // the while loop by itself would leave the array empty
             number.add(0);
         }
@@ -83,25 +84,27 @@ public class LargeNumber implements Comparable<LargeNumber> {
         init(n);
     }
 
-    // Team 6
+    // Team 6 - Done
     public void init(String n) {
         // clear number arrayString
         if (number != null) {
             number.clear();
-        }else{
+        } else {
             number = new ArrayList<Integer>(0); // create an empty array
+        }
         // check if the number in the beginning is pos or neg
         if (n.charAt(0) == '-') {
             sign = -1;
-        } else 
+        } else
             sign = 1;
-        
+
         // add it to the arrayList one number at a time
         for (int i = 0; i < n.length(); i++) {
             char c = n.charAt(i);
-            int charNumber = Integer.parseInt("" + c);
-            number.add(0, charNumber);
-        	}
+            if (Character.isDigit(c)) {
+                int charNumber = Integer.parseInt("" + c);
+                number.add(0, charNumber);
+            }
         }
     }
 
@@ -124,9 +127,19 @@ public class LargeNumber implements Comparable<LargeNumber> {
             result = "-" + result;
         return result;
     }
+    
+    // DV and Teams 4 and 9
+    public int toInt() {
+        int wholeNumber = 0;
 
+        for (int i = this.getSize() - 1; i >= 0; i--) {
+            wholeNumber = wholeNumber * 10 + number.get(i);
+        }
+        return wholeNumber;
+    }
+        
     /********************************************************/
-    // Team 3: Trace Crafton, Jon Fulkerson, Stephen Torrijas
+    // Team 3: Trace Crafton, Jon Fulkerson, Stephen Torrijas - Done
     // Function allowing us to compare two arrays as integers
     // Should return 1 if this is larger than other, 0 if they are equal
     public int compareTo(LargeNumber o) {
@@ -187,24 +200,32 @@ public class LargeNumber implements Comparable<LargeNumber> {
 
     // Team 1
     // Addition Function
-    // Katie Delucio, Maddie Abbott, Tiffany Leister
+    // Katie Delucio, Maddie Abbott, Tiffany Leister - Done
     public void add(LargeNumber other) {
         int nextDig = 0;
         // Checking if signs are different
         // If so, subtraction method is carried out
         if (this.sign != other.sign) {
+            other.sign = -other.sign;
             this.subtract(other);
+            other.sign = -other.sign;
         } else {
+            // checking size and adding 0 if necessary
+            for (int i = (this.number.size()); i < (other.number).size(); i++) {
+                (this.number).add(0);
+            }
+            for (int i = (other.number.size()); i < (this.number).size(); i++) {
+                (other.number).add(0);
+            }
             for (int i = 0; i < other.getSize(); i++) {
-                int sum = (this.number).get(i) +
-                        (other.number).get(i) + nextDig;
+                int sum = (this.number).get(i) + (other.number).get(i) + nextDig;
                 // If sum of two digits is larger than 10, store result
                 if (sum < 10) {
                     (this.number).set(i, sum);
                     nextDig = 0;
                 } else {
 
-                    (this.number).set(i, sum = 10);
+                    (this.number).set(i, sum - 10);
                     nextDig = 1;
                 }
             }
@@ -213,6 +234,8 @@ public class LargeNumber implements Comparable<LargeNumber> {
                 (this.number).add(1);
             }
         }
+
+        other.cleanTrail();
     }
 
     /**********************************************************************************************
@@ -222,7 +245,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
      * checking their sign.
      * if they different it convert into an Addition else, it compare the magnitude
      * and does
-     * the subtraction accordinly with help of subtractFromLarge Helper method
+     * the subtraction accordingly with help of subtractFromLarge Helper method
      *
      ******************************************************************************************/
     public void subtract(LargeNumber other) {
@@ -238,8 +261,9 @@ public class LargeNumber implements Comparable<LargeNumber> {
             int comparison = this.compareTo(other);
 
             if (comparison == 0) {
+                this.init(0);
                 // Numbers are equal, result should be zero
-                System.out.println("Subtraction result: 0");
+                //System.out.println("Subtraction result: 0");
             } else if (comparison > 0) {
                 // 'this' is larger, perform subtraction
                 subtractFromLarge(this.number, other.number);
@@ -280,86 +304,73 @@ public class LargeNumber implements Comparable<LargeNumber> {
         }
 
         // Print the result
-        System.out.print("Subtraction result: ");
-        for (int i = from.size() - 1; i >= 0; i--) {
-            System.out.print(from.get(i));
-        }
-        System.out.println();
+        //System.out.print("Subtraction result: ");
+//        for (int i = from.size() - 1; i >= 0; i--) {
+//            System.out.print(from.get(i));
+//        }
+//        System.out.println();
     }
 
-    // Team 4
+    // Team 4 - Done
     public void multiply(LargeNumber other) {
         LargeNumber copiedLN = new LargeNumber(this);
         LargeNumber otherCopy = new LargeNumber(other);
-        // Execute the multiplication on the copy
-        LargeNumber larger, smaller;
+        int saveSign; // will hold the final sign for this object
+        LargeNumber one;
 
-        if (this.compareTo(other) > 0) {
-            larger = this;
-            smaller = other;
-        } else {
-            larger = other;
-            smaller = this;
-        }
-
-        int copiedWholeNumber = 0, smallerWhole = 0;
-
-        for (int i = larger.getSize(); i > 0; i--) {
-            copiedWholeNumber += larger.number.get(i - 1) * (int) Math.pow(10, i - 1);
-        }
-
-        for (int i = copiedWholeNumber; i > 0; i--) {
-            this.add(smaller);
-        }
-
-        copiedLN = new LargeNumber(copiedWholeNumber * smallerWhole);
-
+     // check signs of each number
         // Finding the final sign
-        if (copiedLN.getSign() == other.getSign()) {
-            copiedLN.sign = 1;
+        if (this.getSign() == other.getSign()) {
+            saveSign = 1;
         } else {
-            copiedLN.sign = -1;
+            saveSign = -1;
         }
+   
+        copiedLN.sign = 1; // multiply the positive numbers
+        this.sign = 1;
+        otherCopy.sign = 1;
+        one = new LargeNumber(1);
 
-        System.out.println("The multiplied number is: " + this); // test toString
-        System.out.println("The multiplied number has " + this.getSize() + " digits.");
-        if (copiedLN.getSign() > 0)
-            System.out.println("The multiplied number is positive.");
-        else
-            System.out.println("The multiplied number is negative.");
+        while (otherCopy.compareTo(one) > 0) { // while otherCopy > 1
+            this.add(copiedLN);                // this += copy
+            otherCopy.subtract(one);           // otherCopy--
+        }
+        
+        this.sign = saveSign;
     }
 
-    // Team 5: Jack Ventura, Titus Duncan, Matthew Molewyk
+    // Team 5: Jack Ventura, Titus Duncan, Matthew Molewyk - Done
     // Method that takes a number as a parameter and divides an existing number by
     // the parameter
     public void divide(LargeNumber other) {
-        //make copies of our objects
+        // make copies of our objects
         LargeNumber dividend = new LargeNumber(this);
         LargeNumber divisor = new LargeNumber(other);
+        int saveSign; // will hold the final sign for this object
+        LargeNumber one = new LargeNumber(1);
 
         // check signs of each number
+        // Finding the final sign
         if (this.getSign() == other.getSign()) {
-            this.sign = 1;
+            saveSign = 1;
         } else {
-            this.sign = -1;
+            saveSign = -1;
         }
-        
-        //store other.sign in a local variable
-        int otherSign = other.sign;
-        
-        //set signs equal to each other and make both positive
-        other.sign = this.sign;
-        dividend.sign = 1;
-        divisor.sign = 1;        
-        
-//      this.number = 0;       < trying to initialize this as 0
-        int result = dividend.compareTo(divisor);
-        while (result == 1)
-            dividend.subtract(divisor);
 
+        this.sign = 1;
+        this.init(0);
+        divisor.sign = 1;
+        dividend.sign = 1;
+
+        while (dividend.compareTo(divisor) >= 0) { // dividend >= divisor
+            this.add(one);                         // result++
+            dividend.subtract(divisor);            // dividend -= divisor
+        }
+
+        this.sign = saveSign;
     }
 
-    // Team 7: Daniel Guernsey, Jiya Stroder, Jennifer Rose
+    // Team 7: Daniel Guernsey, Jiya Stroder, Jennifer Rose - Done
     public void percent(LargeNumber other) {
         LargeNumber copy = new LargeNumber(this);
         copy.divide(other);
@@ -367,7 +378,7 @@ public class LargeNumber implements Comparable<LargeNumber> {
         this.subtract(copy);
     }
 
-    // Team 8: Gavin Power, Brandon Jones, Charlie Kinnett
+    // Team 8: Gavin Power, Brandon Jones, Charlie Kinnett - Done
     // This is a method that removes all trailing 0s in a LargeNumber object
     // with a test in TestNumber.java titled testCleanTrail
     public void cleanTrail() {
@@ -380,9 +391,55 @@ public class LargeNumber implements Comparable<LargeNumber> {
             digit--;
         }
     }
+    
+    // Check if the number is equal to 0.
+    public boolean isZero() {
+        return getSize() == 1 && number.get(0) == 0;
+    }
 
-    // Team 9
+    // Team 9: Gaven Van Skyock, Thomas Polega - Done
     public void power(LargeNumber other) {
+        if (this.isZero()) // 0 to any power is 0
+            return;
 
+        // If the exponent (other) is 0, set the result to 1 and return
+        if (other.isZero()) {
+            this.init(1);
+            return;
+        }
+
+        // Check if the exponent is negative
+        // An non-0 integer to a negative power is less than 1 in absolute value
+        // so it truncates to 0.
+        if (other.getSign() < 0) {
+            this.init(0);
+            return;
+        }
+
+        LargeNumber base = new LargeNumber(this);
+        LargeNumber exponent = new LargeNumber(other);
+        LargeNumber zero = new LargeNumber(0);
+        LargeNumber two = new LargeNumber(2);
+
+        // Initialize the result to 1
+        this.init(1);
+        while (exponent.compareTo(zero) > 0) {
+            // If the exponent is odd, multiply the result by the base
+            if (exponent.number.get(0) % 2 != 0) { // is the exponent odd?
+                this.multiply(base);
+            }
+
+            // Divide the exponent by 2
+            exponent.divide(two);
+
+            // Square the base (result)
+            base.multiply(base);
+        }
+
+        // If the base (this) was negative and the exponent was even, make the result
+        // positive
+        // if (this.sign < 0 && other.number.get(0) % 2 == 0) { // - not necessary
+        // this.sign = 1;
+        // }
     }
 }

@@ -16,6 +16,10 @@ public class TestNumber {
     public static void main(String[] args) {
 
         // testConstructorInt();
+        testSubtract(-350, -1275); // should answer 925
+        testSubtract(350, 1275);   // should answer -925
+        testSubtract(-350, -125);  // should answer -225
+        testSubtract(350, 125);    // should answer 225
         testPower();
         // testMultiply();
         // testCleanTrail();
@@ -160,8 +164,8 @@ public class TestNumber {
     
      // Team 9: Gaven Van Skyock, Thomas Polega
     public static void testPower() {
-        LargeNumber base = new LargeNumber(3); // Set the base to a positive number
-        LargeNumber exponent = new LargeNumber(3); // Set the exponent to a positive number
+        LargeNumber base = new LargeNumber(12); // Set the base to a positive number
+        LargeNumber exponent = new LargeNumber(5); // Set the exponent to a positive number
 
         System.out.println("Base: " + base);
         System.out.println("Exponent: " + exponent);
